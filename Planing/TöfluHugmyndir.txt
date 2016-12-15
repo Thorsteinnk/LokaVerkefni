@@ -3,6 +3,7 @@
 -Verð
 -Herbergi
 -Nánari Lýsing (Text)
+--Myndir(url/local?)
 --Heimilisfang
 
 

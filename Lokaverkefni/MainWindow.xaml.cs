@@ -24,5 +24,21 @@ namespace Lokaverkefni
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Ibud.Visibility == Visibility.Hidden)
+            {
+                Ibud.Visibility = Visibility.Visible;
+                Notandi.Visibility = Visibility.Hidden;
+            }
+
+            else if (Ibud.Visibility == Visibility.Visible)
+            {
+                Ibud.Visibility = Visibility.Hidden;
+                Notandi.Visibility = Visibility.Visible;
+            }
+            
+        }
     }
 }

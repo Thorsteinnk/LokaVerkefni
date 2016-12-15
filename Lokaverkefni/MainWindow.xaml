@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:Lokaverkefni"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid Background="#FFE0D9D9">
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="115">
+            <Button x:Name="button" Content="Button" Height="33.63" Width="85.335" Click="button_Click"/>
+        </ListBox>
+        <Grid Name="Ibud" Margin="115,51.47,0,0">
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="22.42" Margin="95.235,82.206,0,0" TextWrapping="Wrap" Text="Ibud" VerticalAlignment="Top" Width="82.206"/>
+
+        </Grid>
+        <Grid Name="Notandi" Margin="115,51.47,0,0">
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="22.42" Margin="95.235,82.206,0,0" TextWrapping="Wrap" Text="Notandi" VerticalAlignment="Top" Width="82.206"/>
+
+        </Grid>
     </Grid>
 </Window>
