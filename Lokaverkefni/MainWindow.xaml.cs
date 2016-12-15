@@ -23,6 +23,7 @@ namespace Lokaverkefni
         public MainWindow()
         {
             InitializeComponent();
+            Ibud.Visibility = Visibility.Hidden;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

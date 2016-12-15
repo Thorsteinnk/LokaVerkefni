@@ -7,16 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="#FFE0D9D9">
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="115">
-            <Button x:Name="button" Content="Button" Height="33.63" Width="85.335" Click="button_Click"/>
-        </ListBox>
-        <Grid Name="Ibud" Margin="115,51.47,0,0">
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="22.42" Margin="95.235,82.206,0,0" TextWrapping="Wrap" Text="Ibud" VerticalAlignment="Top" Width="82.206"/>
+        <StackPanel HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="96">
+            <Image Source=".\Data\Logo.png"  />
+            <Button x:Name="Home" Content="Home"/>
+            <Button x:Name="Apartments" Content="Apartments"/>
+            <Button x:Name="Customers" Content="Customers"/>
+            <Button x:Name="Contracts" Content="Contracts"/>
+
+        </StackPanel>
+        <Grid Name="Ibud" Margin="101,51.47,0,0">
+
 
         </Grid>
-        <Grid Name="Notandi" Margin="115,51.47,0,0">
-            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="22.42" Margin="95.235,82.206,0,0" TextWrapping="Wrap" Text="Notandi" VerticalAlignment="Top" Width="82.206"/>
+        <Grid Name="Notandi" Margin="101,51,0,0">
+
 
         </Grid>
+        
+
     </Grid>
 </Window>
