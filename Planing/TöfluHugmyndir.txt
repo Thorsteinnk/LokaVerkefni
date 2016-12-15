@@ -2,7 +2,7 @@
 -Fermetrar
 -Verð
 -Herbergi
--
+-Nánari Lýsing (Text)
 --Heimilisfang
 
 
@@ -10,15 +10,22 @@
 Leigjandi
 -Nafn
 -Kennitala
+--Meðmæli
 --Heimilisfang
 
 
 Atvik
 --Heimilisfang
-
+-Uplýsingar Um Atvik
+-Hvað var gert (NULL - óleyst) 
 
 -Heimilisfang
 --Póstnúmer
 --GötuHeiti
 --Húsnúmer
 --Íbúð
+
+
+-Meðmæli
+--Leigjandi
+--(Text)
