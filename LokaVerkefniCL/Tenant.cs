@@ -8,7 +8,7 @@ using System.Media;
 
 namespace LokaVerkefniCL
 {
-    class Person
+    class Tenant
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -16,8 +16,8 @@ namespace LokaVerkefniCL
         public Address Address { get; set; }
         public ObservableCollection<Reference> References { get; set; }
 
-        public Person() { }
-        public Person(string Name, int AddressID)
+        public Tenant() { }
+        public Tenant(string Name, int AddressID)
         {
             this.Name = Name;
             this.AddressID = AddressID;

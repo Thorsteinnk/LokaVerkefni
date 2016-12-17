@@ -12,7 +12,7 @@ namespace LokaVerkefniCL
         public int ApartmentID { get; set; }
         public Apartment Apartment { get; set; }
         public int PersonID { get; set; }
-        public Person Person { get; set; }
+        public Tenant Person { get; set; }
         public int Price { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime ReturnDate { get; set; }

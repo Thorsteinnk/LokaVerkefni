@@ -55,7 +55,7 @@
     <Compile Include="Incident.cs" />
     <Compile Include="LokaverkefniDBContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="Tenant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="References.cs" />
     <Compile Include="Zip.cs" />
@@ -63,9 +63,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="postnumer.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
