@@ -10,7 +10,14 @@ namespace LokaVerkefniCL
     class Zip
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Location { get; set; }
+
+        public Zip() { }
+        public Zip(int zip, string Location)
+        {
+            this.ID = zip;
+            this.Location = Location;
+        }
     }
 }

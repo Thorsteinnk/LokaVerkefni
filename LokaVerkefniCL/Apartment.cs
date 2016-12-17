@@ -17,5 +17,14 @@ namespace LokaVerkefniCL
         public int AddressID { get; set; }
         public Address Address { get; set; }
         public ObservableCollection<Incident> Incidents { get; set; }
+
+        public Apartment() { }
+        public Apartment(float Size, int NumberOfRooms, string Description, int AdressID)
+        {
+            this.Size = Size;
+            this.NumberOfRooms = NumberOfRooms;
+            this.Description = Description;
+            this.AddressID = AddressID;
+        }
     }
 }
