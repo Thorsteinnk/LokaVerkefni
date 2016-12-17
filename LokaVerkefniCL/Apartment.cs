@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace LokaVerkefniCL
 {
+    
     class Apartment
     {
         public int ID { get; set; }
