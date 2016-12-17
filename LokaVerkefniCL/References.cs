@@ -12,5 +12,12 @@ namespace LokaVerkefniCL
         public int PersonID { get; set; }
         public Person Person { get; set; }
         public string Description { get; set; }
+
+        public Reference() { }
+        public Reference(int PersonID, string Description)
+        {
+            this.PersonID = PersonID;
+            this.Description = Description;
+        }
     }
 }
