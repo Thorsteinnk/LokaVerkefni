@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace LokaVerkefniCL
 {
@@ -14,5 +15,6 @@ namespace LokaVerkefniCL
         public string Description { get; set; }
         public int AddressID { get; set; }
         public Address Address { get; set; }
+        public ObservableCollection<Incident> Incidents { get; set; }
     }
 }
