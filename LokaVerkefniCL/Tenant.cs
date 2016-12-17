@@ -15,6 +15,7 @@ namespace LokaVerkefniCL
         public int AddressID { get; set; }
         public Address Address { get; set; }
         public ObservableCollection<Reference> References { get; set; }
+        public ObservableCollection<Contract> Contracts { get; set; }
 
         public Tenant() { }
         public Tenant(string Name, int AddressID)

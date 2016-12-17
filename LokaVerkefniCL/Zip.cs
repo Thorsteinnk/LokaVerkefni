@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace LokaVerkefniCL
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
         public string Location { get; set; }
+        public ObservableCollection<Address> Addresss { get; set; }
 
         public Zip() { }
         public Zip(int zip, string Location)

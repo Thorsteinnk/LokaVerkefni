@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,9 @@ namespace LokaVerkefniCL
         public int ID { get; set; }
         public string Street { get; set; }
         public int? HouseNumber { get; set; }
-        public string ApartmentNumber { get; set; }
         public int ZipID { get; set; }
         public Zip Zip { get; set; }
+        public ObservableCollection<Apartment> Apartments { get; set; }
 
         public Address() { }
         public Address(string Street, int Zip)
@@ -27,13 +28,6 @@ namespace LokaVerkefniCL
             this.Street = Street;
             this.ZipID = Zip;
             this.HouseNumber = HouseNumber;
-        }
-        public Address(string Street, int Zip, int HouseNumber, string ApartmentNumber)
-        {
-            this.Street = Street;
-            this.ZipID = Zip;
-            this.HouseNumber = HouseNumber;
-            this.ApartmentNumber = ApartmentNumber;
         }
     }
 }
