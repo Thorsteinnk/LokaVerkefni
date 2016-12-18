@@ -22,6 +22,8 @@ namespace Lokaverkefni
         public Apartments()
         {
             InitializeComponent();
+            LokaverkefniDataContext DContext = new LokaverkefniDataContext();
+            DataContext = DContext;
         }
     }
 }

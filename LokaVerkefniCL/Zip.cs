@@ -15,6 +15,15 @@ namespace LokaVerkefniCL
         public string Location { get; set; }
         public ObservableCollection<Address> Addresss { get; set; }
 
+        public string Full
+        {
+            get
+            {
+                return ID.ToString() + " " + Location;
+            }
+        }
+        
+
         public Zip() { }
         public Zip(int zip, string Location)
         {

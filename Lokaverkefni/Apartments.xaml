@@ -10,7 +10,7 @@
         <ListBox x:Name="listBox" HorizontalAlignment="Left" Width="156" Margin="255,47,0,0">
 
         </ListBox>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="comboBox" ItemsSource="{Binding Zip}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtHerbergi" HorizontalAlignment="Left" Height="23" Margin="71,63,0,0" TextWrapping="Wrap" Text="Herbergi" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtFermetrar" HorizontalAlignment="Left" Height="23" Margin="71,91,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtVerd" HorizontalAlignment="Left" Height="23" Margin="71,119,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>

@@ -164,6 +164,9 @@ namespace LokaVerkefniCL.Migrations
                 new Zip(900, "Vestmannaeyjum"),
                 new Zip(902, "Vestmannaeyjum")
                );
+
+            context.Adresses.AddOrUpdate(a => a.ID, new Address("Móabarð", 220, 34));
+            context.Apartments.AddOrUpdate(a => a.ID, new Apartment((float)63.5, 2, "Góð og vel skipulögð 63,5 fm íbúð á annarri hæð í litlu fjölbýlishúsi við Móabarð 34 með góðu útsýni til suðurs.", 1));
             //  This method will be called after migrating to the latest version.
 
         }
