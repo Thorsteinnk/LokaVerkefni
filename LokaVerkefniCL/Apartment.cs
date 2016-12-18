@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 namespace LokaVerkefniCL
 {
     
-    class Apartment
+    public class Apartment
     {
         public int ID { get; set; }
         public float Size { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LokaVerkefniCL
 {
-    class Reference
+    public class Reference
     {
         public int ID { get; set; }
         public int PersonID { get; set; }

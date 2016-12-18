@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LokaVerkefniCL
 {
-    class Contract
+    public class Contract
     {
         public int ID { get; set; }
         public int ApartmentID { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LokaVerkefniCL
 {
-    class Incident
+    public class Incident
     {
         public int ID { get; set; }
         public string Description { get; set; }

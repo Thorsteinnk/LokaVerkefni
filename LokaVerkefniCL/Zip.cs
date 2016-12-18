@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LokaVerkefniCL
 {
-    class Zip
+    public class Zip
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LokaVerkefniCL
 {
 
-    class Address
+    public class Address
     {
         public int ID { get; set; }
         public string Street { get; set; }

@@ -8,7 +8,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace LokaVerkefniCL
 {
-    class LokaverkefniDBContext : DbContext
+    public class LokaverkefniDBContext : DbContext
     {
         public DbSet<Address> Adresses { get; set; }
         public DbSet<Apartment> Apartments { get; set; }

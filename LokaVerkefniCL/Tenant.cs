@@ -8,7 +8,7 @@ using System.Media;
 
 namespace LokaVerkefniCL
 {
-    class Tenant
+    public class Tenant
     {
         public int ID { get; set; }
         public string Name { get; set; }
