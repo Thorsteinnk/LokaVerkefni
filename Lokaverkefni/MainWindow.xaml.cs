@@ -26,6 +26,22 @@ namespace Lokaverkefni
             
         }
 
+        private void btnApartments_Click(object sender, RoutedEventArgs e)
+        {
+            Apartments win = new Apartments();
+            win.ShowDialog();
+        }
 
+        private void btnCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            Persons win = new Persons();
+            win.ShowDialog();
+        }
+
+        private void btnContracts_Click(object sender, RoutedEventArgs e)
+        {
+            Contracts win = new Contracts();
+            win.ShowDialog();
+        }
     }
 }

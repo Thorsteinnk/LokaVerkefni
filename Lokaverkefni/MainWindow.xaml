@@ -5,28 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lokaverkefni"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid Background="Black">
-        <StackPanel HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="96" Background="Black">
+        Title="MainWindow" Height="617.472" Width="864.062">
+    <Grid Background="#FF005D44">
+        <StackPanel HorizontalAlignment="Left" Width="192" Background="#FF005D44">
             <Image Source="Logo.png"  />
-            <Button x:Name="btnHome" Content="Home" Background="Black" Foreground="White"/>
-            <Button x:Name="btnApartments" Content="Apartments" Background="Black" Foreground="White"/>
-            <Button x:Name="btnCustomers" Content="Customers" Background="Black" Foreground="White"/>
-            <Button x:Name="btnContracts" Content="Contracts" Background="Black" Foreground="White"/>
+            <Button x:Name="btnHome" Content="Home" Background="#FF005D44" Foreground="White" FontSize="30"/>
+            <Button x:Name="btnApartments" Content="Apartments" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnApartments_Click"/>
+            <Button x:Name="btnCustomers" Content="Customers" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnCustomers_Click"/>
+            <Button x:Name="btnContracts" Content="Contracts" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
 
         </StackPanel>
-        <Grid Name="gridHome" Margin="96,51,0,0" Background="White" Visibility="Hidden">
+        <Grid Name="gridHome" Margin="192,51,0,0" Background="White">
+            <Image x:Name="image" Margin="0,0,0,10" Source="Logo.png"/>
 
 
         </Grid>
-        <Grid Name="gridApartment" Margin="96,51,0,0" Background="White">
-            
+        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White" Visibility="Hidden">
+
         </Grid>
-        <Grid Name="gridCustomers" Margin="96,51,0,0" Background="White" Visibility="Hidden">
+        <Grid Name="gridCustomers" Margin="192,110,0,0" Background="White" Visibility="Hidden">
 
 
         </Grid>
-        <Grid Name="gridContracts" Margin="96,51,0,0" Background="White" Visibility="Hidden">
+        <Grid Name="gridContracts" Margin="192,110,0,0" Background="White" Visibility="Hidden">
 
 
         </Grid>
