@@ -23,16 +23,16 @@ namespace LokaVerkefniCL
             {
                 try
                 {
-                    if (HouseNumber == null && ApartmentNumber == null)
+                    if ((HouseNumber == null || HouseNumber == " ") && (ApartmentNumber == null || ApartmentNumber == " "))
                     {
                         return Street + " " + Zip.Full;
                     }
 
-                    else if (HouseNumber == null)
+                    else if ((HouseNumber == null || HouseNumber == " "))
                     {
                         return Street + " " + ApartmentNumber + " " + Zip.Full;
                     }
-                    else if (ApartmentNumber == null)
+                    else if (ApartmentNumber == null || ApartmentNumber == " ")
                     {
                         return Street + " " + HouseNumber + " " + Zip.Full;
                     }

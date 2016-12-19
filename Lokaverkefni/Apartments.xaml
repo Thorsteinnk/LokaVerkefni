@@ -18,7 +18,7 @@
             <TextBlock x:Name="txtdVerd" HorizontalAlignment="Left" Height="23" Margin="71,119,0,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Width="120"/>
             <TextBlock x:Name="txtdDescription" Margin="15,181,10,10" TextWrapping="Wrap" Text="{Binding Description}"/>
             <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="218,36,0,0" VerticalAlignment="Top" Width="108" Height="42" FontSize="14" Click="EnableEdit"/>
-            <Button x:Name="NewApartment" Content="New Apartment" HorizontalAlignment="Left" Margin="218,83,0,0" VerticalAlignment="Top" Width="108" Height="42" FontSize="14" Click="Newaptm"/>
+            <Button x:Name="BtnNewApartment" Content="New Apartment" HorizontalAlignment="Left" Margin="218,83,0,0" VerticalAlignment="Top" Width="108" Height="42" FontSize="14" Click="Newaptm"/>
             <Label x:Name="lbldStreet" Content="Street Name" HorizontalAlignment="Left" Margin="346,31,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lbldHouseNumber" Content="House Number" HorizontalAlignment="Left" Margin="331,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.577,0.612"/>
             <Label x:Name="lbldApartmentNumber" Content="Apartment" HorizontalAlignment="Left" Margin="355,87,0,0" VerticalAlignment="Top"/>
@@ -62,9 +62,9 @@
             <Label x:Name="lblnHouseNumber" Content="House Number" HorizontalAlignment="Left" Margin="331,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.577,0.612"/>
             <Label x:Name="lblnApartmentNumber" Content="Apartment" HorizontalAlignment="Left" Margin="355,87,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblnZip" Content="Zip" HorizontalAlignment="Left" Margin="395,115,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtnStreet" HorizontalAlignment="Left" Height="23" Margin="422,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtnHouseNumber" HorizontalAlignment="Left" Height="23" Margin="422,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtnApartmentNumber" HorizontalAlignment="Left" Height="23" Margin="422,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtnStreet" HorizontalAlignment="Left" Height="23" Margin="422,35,0,0" TextWrapping="Wrap" Text="{Binding Address.Street}" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtnHouseNumber" HorizontalAlignment="Left" Height="23" Margin="422,62,0,0" TextWrapping="Wrap" Text="{Binding Address.HouseNumber}" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtnApartmentNumber" HorizontalAlignment="Left" Height="23" Margin="422,91,0,0" TextWrapping="Wrap" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cBoxnZip" ItemsSource="{Binding}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="422,119,0,0" VerticalAlignment="Top" Width="120"/>
         </Grid>
     </Grid>
