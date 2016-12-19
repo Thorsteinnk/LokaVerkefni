@@ -20,6 +20,9 @@ namespace Lokaverkefni
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -27,21 +30,29 @@ namespace Lokaverkefni
         }
 
         private void btnApartments_Click(object sender, RoutedEventArgs e)
-        {
-            Apartments win = new Apartments();
-            win.ShowDialog();
+        {            
+            Apartments aptwin = new Apartments();
+            aptwin.ShowDialog();
         }
 
         private void btnCustomers_Click(object sender, RoutedEventArgs e)
         {
-            Persons win = new Persons();
-            win.ShowDialog();
+            Persons custwin = new Persons();
+            custwin.ShowDialog();
         }
 
         private void btnContracts_Click(object sender, RoutedEventArgs e)
         {
-            Contracts win = new Contracts();
-            win.ShowDialog();
+            Contracts contrwin = new Contracts();
+            contrwin.ShowDialog();
+        }
+
+        private void HideGrids()
+        {
+            gridHome.Visibility = Visibility.Collapsed;
+            gridApartment.Visibility = Visibility.Collapsed;
+            gridContracts.Visibility = Visibility.Collapsed;
+            gridCustomers.Visibility = Visibility.Collapsed;
         }
     }
 }

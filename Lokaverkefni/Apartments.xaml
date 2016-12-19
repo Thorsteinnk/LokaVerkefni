@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Lokaverkefni"
         mc:Ignorable="d"
         Title="Apartments" Height="345.17" Width="612.126">
-    <Grid>
+    <Grid Name="AptMain">
         <Grid Name="Display">
             <ComboBox x:Name="cBoxApartment" ItemsSource="{Binding}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="181"/>
             <Label x:Name="lbldHerbergi" Content="Herbergi" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="56"/>
@@ -26,7 +26,7 @@
             <TextBlock x:Name="txtdStreet" HorizontalAlignment="Left" Height="23" Margin="422,35,0,0" TextWrapping="Wrap" Text="{Binding Address.Street}" VerticalAlignment="Top" Width="120"/>
             <TextBlock x:Name="txtdHouseNumber" HorizontalAlignment="Left" Height="23" Margin="422,62,0,0" TextWrapping="Wrap" Text="{Binding Address.HouseNumber}" VerticalAlignment="Top" Width="120"/>
             <TextBlock x:Name="txtdApartmentNumber" HorizontalAlignment="Left" Height="23" Margin="422,91,0,0" TextWrapping="Wrap" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" Width="120"/>
-            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="422,119,0,0" TextWrapping="Wrap" Text="{Binding Address.Zip.ZipCode}" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="422,119,0,0" TextWrapping="Wrap" Text="{Binding Address.Zip.Full}" VerticalAlignment="Top"/>
         </Grid>
         
         <Grid Name="Edit" Visibility="Collapsed">            
