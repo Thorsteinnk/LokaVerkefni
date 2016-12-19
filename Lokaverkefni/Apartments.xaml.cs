@@ -24,7 +24,7 @@ namespace Lokaverkefni
         CollectionViewSource viewSource = new CollectionViewSource();
         CollectionViewSource zipviewSource = new CollectionViewSource();
         LokaverkefniDataContext DContext = new LokaverkefniDataContext();
-
+        LokaVerkefniCL.Apartment Editing;
         public Apartments()
         {
             InitializeComponent();
@@ -38,7 +38,7 @@ namespace Lokaverkefni
         private void EnableEdit(object sender, RoutedEventArgs e)
         {
             cBoxeZip.DataContext = zipviewSource;
-            LokaVerkefniCL.Apartment Editing = (LokaVerkefniCL.Apartment)cBoxApartment.SelectedItem;
+            Editing = (LokaVerkefniCL.Apartment)cBoxApartment.SelectedItem;
             Display.Visibility = Visibility.Collapsed;
             Edit.Visibility = Visibility.Visible;
             Edit.DataContext = Editing;
@@ -59,9 +59,9 @@ namespace Lokaverkefni
             LokaVerkefniCL.Apartment newap = (LokaVerkefniCL.Apartment)Newapt.DataContext;
             LokaVerkefniCL.Zip Post = (LokaVerkefniCL.Zip)cBoxnZip.SelectedItem;
             LokaVerkefniCL.Address adr = new LokaVerkefniCL.Address();
-            txtnStreet.DataContext = adr;
-            txtnHouseNumber.DataContext = adr;
-            txtnApartmentNumber.DataContext = adr;
+            adr.Street = txtnStreet.Text;
+            adr.HouseNumber = txtnHouseNumber.Text;
+            adr.ApartmentNumber = txtnApartmentNumber.Text;
             newap.Address = adr;
             adr.ZipID = Post.ID;
             DContext.context.Adresses.Add(adr);
@@ -71,6 +71,15 @@ namespace Lokaverkefni
             DContext.context.SaveChanges();
             Display.Visibility = Visibility.Visible;
             Newapt.Visibility = Visibility.Collapsed;
+        }
+
+        private void SaveChanges(object sender, RoutedEventArgs e)
+        {
+            LokaVerkefniCL.Zip post = (LokaVerkefniCL.Zip)cBoxeZip.SelectedItem;
+            Editing.Address.ZipID = post.ID;
+            DContext.context.SaveChanges();
+            Edit.Visibility = Visibility.Collapsed;
+            Display.Visibility = Visibility.Visible;
         }
     }
 }
