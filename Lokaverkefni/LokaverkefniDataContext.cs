@@ -11,14 +11,19 @@ namespace Lokaverkefni
 {
     class LokaverkefniDataContext
     {
-        LokaVerkefniCL.LokaverkefniDBContext context = new LokaverkefniDBContext();
+        public LokaverkefniDBContext context = new LokaverkefniDBContext();
         ObservableCollection<Address> adresses;
         public ObservableCollection<Address> Adresses
         {
             get
             {
-                
+                context.Zip.Load();
+                context.Contracts.Load();
+                context.Incidents.Load();
+                context.Apartments.Load();
                 context.Adresses.Load();
+                context.References.Load();
+                context.Tenants.Load();
                 adresses = context.Adresses.Local;
                 return adresses;
             }
@@ -28,8 +33,13 @@ namespace Lokaverkefni
         {
             get
             {
-                
+                context.Zip.Load();
+                context.Contracts.Load();
+                context.Incidents.Load();
                 context.Apartments.Load();
+                context.Adresses.Load();
+                context.References.Load();
+                context.Tenants.Load();
                 apartments = context.Apartments.Local;
                 return apartments;
             }
@@ -39,8 +49,13 @@ namespace Lokaverkefni
         {
             get
             {
-                
+                context.Zip.Load();
                 context.Contracts.Load();
+                context.Incidents.Load();
+                context.Apartments.Load();
+                context.Adresses.Load();
+                context.References.Load();
+                context.Tenants.Load();
                 contracts = context.Contracts.Local;
                 return contracts;
             }
@@ -50,8 +65,13 @@ namespace Lokaverkefni
         {
             get
             {
-                
+                context.Zip.Load();
+                context.Contracts.Load();
                 context.Incidents.Load();
+                context.Apartments.Load();
+                context.Adresses.Load();
+                context.References.Load();
+                context.Tenants.Load();
                 incidents = context.Incidents.Local;
                 return incidents;
             }
@@ -61,7 +81,12 @@ namespace Lokaverkefni
         {
             get
             {
-                
+                context.Zip.Load();
+                context.Contracts.Load();
+                context.Incidents.Load();
+                context.Apartments.Load();
+                context.Adresses.Load();
+                context.References.Load();
                 context.Tenants.Load();
                 tenants = context.Tenants.Local;
                 return tenants;
@@ -71,8 +96,14 @@ namespace Lokaverkefni
         public ObservableCollection<Reference> References
         {
             get
-            {                
+            {
+                context.Zip.Load();
+                context.Contracts.Load();
+                context.Incidents.Load();
+                context.Apartments.Load();
+                context.Adresses.Load();
                 context.References.Load();
+                context.Tenants.Load();
                 references = context.References.Local;
                 return references;
             }

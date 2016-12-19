@@ -15,7 +15,7 @@ namespace LokaVerkefniCL.Migrations
         protected override void Seed(LokaVerkefniCL.LokaverkefniDBContext context)
         {
             context.Zip.AddOrUpdate(
-                z => z.ID, new Zip(101, "Reykjavík"),
+                z => z.ZipCode, new Zip(101, "Reykjavík"),
                 new Zip(103, "Reykjavík"),
                 new Zip(104, "Reykjavík"),
                 new Zip(105, "Reykjavík"),
@@ -164,9 +164,29 @@ namespace LokaVerkefniCL.Migrations
                 new Zip(900, "Vestmannaeyjum"),
                 new Zip(902, "Vestmannaeyjum")
                );
+            context.SaveChanges();
+            context.Adresses.AddOrUpdate(a => new {a.Street, a.HouseNumber, a.ApartmentNumber, a.ZipID }, new Address("Móabarð", "34", 33));
+            context.SaveChanges();
+            context.Adresses.AddOrUpdate(a => new { a.Street, a.HouseNumber, a.ApartmentNumber, a.ZipID }, new Address("Þrúðvangur", 33));
+            context.SaveChanges();
+            context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
+            {
+                Price = 160000,
+                Size = 63.5,
+                NumberOfRooms = 2,
+                Description = "Góð og vel skipulögð 63,5 fm íbúð á annarri hæð í litlu fjölbýlishúsi við Móabarð 34 með góðu útsýni til suðurs.",
+                AddressID = 1
+            });
+            context.SaveChanges();
+            context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
+            {
+                Price = 285000,
+                Size = 233,
+                NumberOfRooms = 8,
+                Description = "Til leigu gott einbýlishús, 192m² ásamt 42m² bílskúr. Forstofa, gestasnyrting, stofa og borðstofa með parketi. eldhús með borðkrók og ísskáp. Fimm herbergi og baðherbergi með innréttingu. Húsið er laust til leigu strax",
+                AddressID = 2
+            });
 
-            context.Adresses.AddOrUpdate(a => a.ID, new Address("Móabarð", 220, 34));
-            context.Apartments.AddOrUpdate(a => a.ID, new Apartment((float)63.5, 2, "Góð og vel skipulögð 63,5 fm íbúð á annarri hæð í litlu fjölbýlishúsi við Móabarð 34 með góðu útsýni til suðurs.", 1));
             //  This method will be called after migrating to the latest version.
 
         }

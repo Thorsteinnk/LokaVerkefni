@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace Lokaverkefni
 {
@@ -19,11 +21,56 @@ namespace Lokaverkefni
     /// </summary>
     public partial class Apartments : Window
     {
+        CollectionViewSource viewSource = new CollectionViewSource();
+        CollectionViewSource zipviewSource = new CollectionViewSource();
+        LokaverkefniDataContext DContext = new LokaverkefniDataContext();
+
         public Apartments()
         {
             InitializeComponent();
-            LokaverkefniDataContext DContext = new LokaverkefniDataContext();
-            DataContext = DContext;
+            viewSource.Source = DContext.Apartments;
+            zipviewSource.Source = DContext.Zip;
+            DataContext = viewSource;
+            
+            
+        }
+
+        private void EnableEdit(object sender, RoutedEventArgs e)
+        {
+            cBoxeZip.DataContext = zipviewSource;
+            LokaVerkefniCL.Apartment Editing = (LokaVerkefniCL.Apartment)cBoxApartment.SelectedItem;
+            Display.Visibility = Visibility.Collapsed;
+            Edit.Visibility = Visibility.Visible;
+            Edit.DataContext = Editing;
+            cBoxeZip.SelectedIndex = Editing.Address.ZipID -1;
+        }
+
+        private void Newaptm(object sender, RoutedEventArgs e)
+        {
+            LokaVerkefniCL.Apartment newap = new LokaVerkefniCL.Apartment();
+            Display.Visibility = Visibility.Collapsed;
+            Newapt.Visibility = Visibility.Visible;
+            Newapt.DataContext = newap;
+            cBoxnZip.DataContext = zipviewSource;
+        }
+
+        private void AddAptment(object sender, RoutedEventArgs e)
+        {
+            LokaVerkefniCL.Apartment newap = (LokaVerkefniCL.Apartment)Newapt.DataContext;
+            LokaVerkefniCL.Zip Post = (LokaVerkefniCL.Zip)cBoxnZip.SelectedItem;
+            LokaVerkefniCL.Address adr = new LokaVerkefniCL.Address();
+            txtnStreet.DataContext = adr;
+            txtnHouseNumber.DataContext = adr;
+            txtnApartmentNumber.DataContext = adr;
+            newap.Address = adr;
+            adr.ZipID = Post.ID;
+            DContext.context.Adresses.Add(adr);
+            DContext.context.SaveChanges();
+            newap.AddressID = adr.ID;            
+            DContext.context.Apartments.Add(newap);
+            DContext.context.SaveChanges();
+            Display.Visibility = Visibility.Visible;
+            Newapt.Visibility = Visibility.Collapsed;
         }
     }
 }

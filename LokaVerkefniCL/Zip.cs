@@ -10,8 +10,8 @@ namespace LokaVerkefniCL
 {
     public class Zip
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
+        public int ZipCode { get; set; }
         public string Location { get; set; }
         public ObservableCollection<Address> Addresss { get; set; }
 
@@ -19,7 +19,16 @@ namespace LokaVerkefniCL
         {
             get
             {
-                return ID.ToString() + " " + Location;
+                try
+                {
+                    return ZipCode + " " + Location;
+                }
+                catch (Exception)
+                {
+
+                    return " ";
+                }
+                
             }
         }
         
@@ -27,7 +36,7 @@ namespace LokaVerkefniCL
         public Zip() { }
         public Zip(int zip, string Location)
         {
-            this.ID = zip;
+            this.ZipCode = zip;
             this.Location = Location;
         }
     }
