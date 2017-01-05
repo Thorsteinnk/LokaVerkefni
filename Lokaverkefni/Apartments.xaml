@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Apartments" Height="345.17" Width="612.126">
     <Grid Name="AptMain">
-        <Grid Name="Display">
+        <Grid Name="Display" Visibility="Collapsed">
             <ComboBox x:Name="cBoxApartment" ItemsSource="{Binding}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="181"/>
             <Label x:Name="lbldHerbergi" Content="Herbergi" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="56"/>
             <Label x:Name="lbldFermetrar" Content="Fermetrar" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="56"/>
@@ -28,8 +28,8 @@
             <TextBlock x:Name="txtdApartmentNumber" HorizontalAlignment="Left" Height="23" Margin="422,91,0,0" TextWrapping="Wrap" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" Width="120"/>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="422,119,0,0" TextWrapping="Wrap" Text="{Binding Address.Zip.Full}" VerticalAlignment="Top"/>
         </Grid>
-        
-        <Grid Name="Edit" Visibility="Collapsed">            
+
+        <Grid Name="Edit" Margin="-10,0,10,0">
             <Label x:Name="lbleHerbergi" Content="Herbergi" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="56"/>
             <Label x:Name="lbleFermetrar" Content="Fermetrar" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="56"/>
             <Label x:Name="lbleVerd" Content="Verð" HorizontalAlignment="Left" Margin="15,119,0,0" VerticalAlignment="Top" Width="56"/>
@@ -47,6 +47,7 @@
             <TextBox x:Name="txteHouseNumber" HorizontalAlignment="Left" Height="23" Margin="422,62,0,0" TextWrapping="Wrap" Text="{Binding Address.HouseNumber}" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="txteApartmentNumber" HorizontalAlignment="Left" Height="23" Margin="422,91,0,0" TextWrapping="Wrap" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cBoxeZip" ItemsSource="{Binding}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="422,119,0,0" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="218,83,0,0" VerticalAlignment="Top" Width="94" Height="34" Click="aptEditCancel"/>
         </Grid>
         <Grid Name="Newapt" Visibility="Collapsed">
             <Label x:Name="lblnHerbergi" Content="Herbergi" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="56"/>

@@ -82,5 +82,11 @@ namespace Lokaverkefni
             Edit.Visibility = Visibility.Collapsed;
             Display.Visibility = Visibility.Visible;
         }
+
+        private void aptEditCancel(object sender, RoutedEventArgs e)
+        {
+
+
+        }
     }
 }

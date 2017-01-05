@@ -37,7 +37,7 @@ namespace Lokaverkefni
 
         private void btnCustomers_Click(object sender, RoutedEventArgs e)
         {
-            Persons custwin = new Persons();
+            Tenants custwin = new Tenants();
             custwin.ShowDialog();
         }
 

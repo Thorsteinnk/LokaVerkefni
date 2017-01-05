@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace LokaVerkefniCL
 {
+    /// <summary>
+    /// Lists Zip Codes
+    /// </summary>
     public class Zip
     {
         public int ID { get; set; }

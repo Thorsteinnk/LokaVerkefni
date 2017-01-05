@@ -19,6 +19,7 @@ namespace LokaVerkefniCL
         public ObservableCollection<Apartment> Apartments { get; set; }
         public string Full
         {
+            
             get
             {
                 try
