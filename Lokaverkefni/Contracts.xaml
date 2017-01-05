@@ -22,7 +22,7 @@
             <TextBlock x:Name="ConTxtMainReturnDate" HorizontalAlignment="Left" Margin="383,77,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="149"/>
             <Button x:Name="conBtnMainNewContract" Content="Nýr samningur" HorizontalAlignment="Right" Margin="0,103,10,0" Width="95" Height="22" VerticalAlignment="Top"/>
             <Button x:Name="conBtnMainEditContract" Content="Breyta samning" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="95" Height="22"/>
-            <Button x:Name="conBtnMainDeleteContract" Content="Eyða samning" HorizontalAlignment="Left" Margin="110,103,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="button2_Click"/>
+            <Button x:Name="conBtnMainDeleteContract" Content="Eyða samning" HorizontalAlignment="Left" Margin="110,103,0,0" VerticalAlignment="Top" Width="95" Height="22"/>
         </Grid>
         <Grid Name="ConNewContract" Visibility="Collapsed">
         </Grid>
