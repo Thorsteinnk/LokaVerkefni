@@ -17,6 +17,11 @@ namespace LokaVerkefniCL
         public int ZipID { get; set; }
         public Zip Zip { get; set; }
         public ObservableCollection<Apartment> Apartments { get; set; }
+        string adressKey;
+        public string AdressKey {
+            get { return adressKey; }
+            set { adressKey = Street + HouseNumber + ApartmentNumber; }
+        }
         public string Full
         {
             
