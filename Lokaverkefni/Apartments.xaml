@@ -60,6 +60,18 @@
             <TextBox x:Name="txteApartmentNumber" HorizontalAlignment="Left" Height="23" Margin="422,91,0,0" TextWrapping="Wrap" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" Width="120"/>
             <ComboBox x:Name="cBoxeZip" ItemsSource="{Binding}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="422,119,0,0" VerticalAlignment="Top" Width="120"/>
             <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="218,83,0,0" VerticalAlignment="Top" Width="94" Height="34" Click="aptEditCancel"/>
+            <ListBox x:Name="aptLboxeditIncidents" Margin="15,0,10,10" Height="58" VerticalAlignment="Bottom" ItemsSource="{Binding Incidents}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox  IsChecked="{Binding Solved}"/>
+                            <TextBox Text="{Binding Description}"/>
+                            <TextBlock Text="       | "/>
+                            <TextBox Text="{Binding Action}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
         <Grid Name="Newapt" Visibility="Collapsed">
             <Label x:Name="lblnHerbergi" Content="Herbergi" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="56"/>
