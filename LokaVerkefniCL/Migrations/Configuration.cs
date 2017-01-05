@@ -165,9 +165,9 @@ namespace LokaVerkefniCL.Migrations
                 new Zip(902, "Vestmannaeyjum")
                );
             context.SaveChanges();
-            context.Adresses.AddOrUpdate(a => new {a.Street, a.HouseNumber, a.ApartmentNumber, a.ZipID }, new Address("Móabarð", "34", 33));
+            context.Adresses.AddOrUpdate(a => a.AdressKey, new Address("Móabarð", "34", 33));
             context.SaveChanges();
-            context.Adresses.AddOrUpdate(a => new { a.Street, a.HouseNumber, a.ApartmentNumber, a.ZipID }, new Address("Þrúðvangur", 33));
+            context.Adresses.AddOrUpdate(a => a.AdressKey, new Address("Þrúðvangur", 33));
             context.SaveChanges();
             context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
             {
@@ -203,12 +203,22 @@ namespace LokaVerkefniCL.Migrations
                 ReturnDate = DateTime.Now.AddYears(2)
             });
 
-            context.Incidents.AddOrUpdate(a => a.Description, new Incident()
-            {
+            context.Incidents.AddOrUpdate(a => a.Description, 
+                new Incident()
+                {
                 Description = "Bilaður Ofn",
                 Solved = false,
-                Action = "Hringja á Pípara"
-            });
+                Action = "Hringja á Pípara",
+                ApartmentID = 1
+                },
+                new Incident()
+                {
+                    Description = "Brotinn Gluggi",
+                    Action = "Skipta Út",
+                    Solved = true,
+                    ApartmentID = 1
+                }
+                );
 
 
             //  This method will be called after migrating to the latest version.

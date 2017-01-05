@@ -12,6 +12,7 @@ namespace LokaVerkefniCL
         public string Description { get; set; }
         public string Action { get; set; }
         public bool Solved { get; set; }
+        public int ApartmentID { get; set; }
 
         public Incident() { }
         public Incident(string Description)
