@@ -9,10 +9,10 @@
     <Grid Background="#FF005D44">
         <StackPanel HorizontalAlignment="Left" Width="192" Background="#FF005D44">
             <Image Source="Logo.png"  />
-            <Button x:Name="btnHome" Content="Home" Background="#FF005D44" Foreground="White" FontSize="30"/>
-            <Button x:Name="btnApartments" Content="Apartments" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnApartments_Click"/>
-            <Button x:Name="btnCustomers" Content="Customers" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnCustomers_Click"/>
-            <Button x:Name="btnContracts" Content="Contracts" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
+            <Button x:Name="btnHome" Content="Heim" Background="#FF005D44" Foreground="White" FontSize="30"/>
+            <Button x:Name="btnApartments" Content="Íbúðir" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnApartments_Click"/>
+            <Button x:Name="btnCustomers" Content="Viðskiptavinir" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnCustomers_Click"/>
+            <Button x:Name="btnContracts" Content="Samningar" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
 
         </StackPanel>
         <Grid Name="gridHome" Margin="192,110,0,0" Background="White">

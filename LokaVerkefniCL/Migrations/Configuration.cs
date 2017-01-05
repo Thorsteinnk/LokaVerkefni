@@ -187,6 +187,16 @@ namespace LokaVerkefniCL.Migrations
                 AddressID = 2
             });
 
+            context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
+            {
+                Name = "Þorsteinn Kristjánsson",
+                SocialSecurity = "0210852519",
+                AddressID = 1,
+            });
+            context.SaveChanges();
+
+
+
             //  This method will be called after migrating to the latest version.
 
         }

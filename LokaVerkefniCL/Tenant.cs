@@ -11,6 +11,7 @@ namespace LokaVerkefniCL
     public class Tenant
     {
         public int ID { get; set; }
+        public string SocialSecurity { get; set; }
         public string Name { get; set; }
         public int AddressID { get; set; }
         public Address Address { get; set; }
