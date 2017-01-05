@@ -19,9 +19,14 @@ namespace Lokaverkefni
     /// </summary>
     public partial class Contracts : Window
     {
+        CollectionViewSource viewSource = new CollectionViewSource();
+        LokaverkefniDataContext DContext = new LokaverkefniDataContext();
+
         public Contracts()
         {
             InitializeComponent();
+            viewSource.Source = DContext.Contracts;
+            DataContext = viewSource;
         }
     }
 }
