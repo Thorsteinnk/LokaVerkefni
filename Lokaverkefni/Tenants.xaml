@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lokaverkefni"
         mc:Ignorable="d"
-        Title="Tenants" Height="300" Width="300">
+        Title="Tenants" Height="345.17" Width="612.126">
     <Grid>
-        
+        <Label x:Name="lblherbergi" Content="Nafn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0"/>
+        <Label x:Name="lblkennitala" Content="Kennitala" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,76,0,0"/>
+        <Label x:Name="lblheimilisfang" Content="Heimilisfang" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,107,0,0" Width="82"/>
+        <Label x:Name="lblmedmaeli" Content="Meðmæli" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,138,0,0" Width="72"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Margin="10,10,0,0" SelectionChanged="comboBox_SelectionChanged"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,50,0,0"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,81,0,0"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,112,0,0"/>
+        <Button x:Name="button" Content="Breyta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Margin="220,10,0,0" Height="42"/>
+        <Button x:Name="button1" Content="Nýr leigjandi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Margin="220,68,0,0" Height="42"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.242,5.591" Margin="97,142,0,0"/>
+
     </Grid>
 </Window>

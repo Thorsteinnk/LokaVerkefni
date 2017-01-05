@@ -19,9 +19,28 @@ namespace Lokaverkefni
     /// </summary>
     public partial class Tenants : Window
     {
+
+        CollectionViewSource viewSource = new CollectionViewSource();
+        CollectionViewSource zipviewSource = new CollectionViewSource();
+        LokaverkefniDataContext DContext = new LokaverkefniDataContext();
+
+
         public Tenants()
         {
             InitializeComponent();
+            viewSource.Source = DContext.Tenants;
+            zipviewSource.Source = DContext.Zip;
+            DataContext = viewSource;
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

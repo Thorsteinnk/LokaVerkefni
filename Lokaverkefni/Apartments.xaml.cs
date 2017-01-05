@@ -88,5 +88,10 @@ namespace Lokaverkefni
 
 
         }
+
+        private void cBoxApartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
