@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Lokaverkefni
 {
     /// <summary>
-    /// Interaction logic for Persons.xaml
+    /// Interaction logic for Tenants.xaml
     /// </summary>
-    public partial class Persons : Window
+    public partial class Tenants : Window
     {
-        public Persons()
+        public Tenants()
         {
             InitializeComponent();
         }
