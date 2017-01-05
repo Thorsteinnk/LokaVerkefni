@@ -194,7 +194,21 @@ namespace LokaVerkefniCL.Migrations
                 AddressID = 1,
             });
             context.SaveChanges();
+            context.Contracts.AddOrUpdate(a => a.ApartmentID, new Contract()
+            {
+                ApartmentID = 1,
+                PersonID = 1,
+                Price = 180000,
+                RentDate = DateTime.Now,
+                ReturnDate = DateTime.Now.AddYears(2)
+            });
 
+            context.Incidents.AddOrUpdate(a => a.Description, new Incident()
+            {
+                Description = "Bilaður Ofn",
+                Solved = false,
+                Action = "Hringja á Pípara"
+            });
 
 
             //  This method will be called after migrating to the latest version.
