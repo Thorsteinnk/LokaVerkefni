@@ -64,6 +64,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DecimalToIsk.cs" />
+    <Compile Include="SizeToPrice.cs" />
     <Compile Include="Tenants.xaml.cs">
       <DependentUpon>Tenants.xaml</DependentUpon>
     </Compile>

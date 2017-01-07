@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:Lokaverkefni"
         mc:Ignorable="d"
         Title="MainWindow" Height="617.472" Width="864.062">
+    <Window.Resources>
+        <local:DecimalToIsk x:Key="DecimalToIsk"/>
+        <local:SizeToPrice x:Key="SizeToPrice"/>
+    </Window.Resources>
     <Grid Background="#FF005D44">
         <StackPanel HorizontalAlignment="Left" Width="192" Background="#FF005D44">
             <Image Source="Logo.png"  />
@@ -15,13 +19,13 @@
             <Button x:Name="btnContracts" Content="Samningar" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
 
         </StackPanel>
-        <Grid Name="gridHome" Margin="192,110,0,0" Background="White">
+        <Grid Name="gridHome" Margin="192,110,0,0" Background="White" >
             <Image x:Name="image" Source="Logo.png"/>
 
 
         </Grid>
-        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White"  Visibility="Collapsed" >
-            <Grid Name="ApartmentDisplay">
+        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White" Visibility="Collapsed" >
+            <Grid Name="ApartmentDisplay" >
                 <Label x:Name="ApartmentDisplayLableNumberOfRooms"   Content="Herbergi"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="70" HorizontalContentAlignment="Right" />
                 <Label x:Name="ApartmentDisplayLableSize"            Content="Fermetrar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="70" HorizontalContentAlignment="Right" />
                 <Label x:Name="ApartmentDisplayLablePrice"           Content="Verð"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0"   Height="26" Width="70" HorizontalContentAlignment="Right" />
@@ -33,7 +37,7 @@
 
                 <TextBlock x:Name="ApartmentDisplayTextblNumberOfRooms"   Text="{Binding NumberOfRooms}"           HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="75,60,0,0"   Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
                 <TextBlock x:Name="ApartmentDisplayTextblSize"            Text="{Binding Size}"                    HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="75,90,0,0"   Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
-                <TextBlock x:Name="ApartmentDisplayTextblPrice"           Text="{Binding Price}"                   HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="75,120,0,0"  Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
+                <TextBlock x:Name="ApartmentDisplayTextblPrice"           Text="{Binding Price, Converter={StaticResource DecimalToIsk}}"                  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="75,120,0,0"  Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
                 <TextBlock x:Name="ApartmentDisplayTextblStreet"          Text="{Binding Address.Street}"          HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="420,30,0,0"  Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
                 <TextBlock x:Name="ApartmentDisplayTextblHouseNumber"     Text="{Binding Address.HouseNumber}"     HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="420,60,0,0"  Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
                 <TextBlock x:Name="ApartmentDisplayTextblApartmentNumber" Text="{Binding Address.ApartmentNumber}" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="420,90,0,0"  Height="26" Width="120" TextWrapping="Wrap" Padding="5" />
@@ -73,7 +77,7 @@
 
                 <TextBox x:Name="ApartmentEditTextBoxHerbergi"        Text="{Binding NumberOfRooms}"           VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,60,0,0"  TextWrapping="Wrap" Padding="5"/>
                 <TextBox x:Name="ApartmentEditTextBoxFermetrar"       Text="{Binding Size}"                    VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,90,0,0"  TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentEditTextBoxVerd"            Text="{Binding Price}"                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,120,0,0" TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentEditTextBoxVerd"            Text="{Binding Price, Converter={StaticResource DecimalToIsk}}"                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,120,0,0" TextWrapping="Wrap" Padding="5"/>
                 <TextBox x:Name="ApartmentEditTextBoxStreet"          Text="{Binding Address.Street}"          VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,30,0,0" TextWrapping="Wrap" Padding="5"/>
                 <TextBox x:Name="ApartmentEditTextBoxHouseNumber"     Text="{Binding Address.HouseNumber}"     VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,60,0,0" TextWrapping="Wrap" Padding="5"/>
                 <TextBox x:Name="ApartmentEditTextBoxApartmentNumber" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,90,0,0" TextWrapping="Wrap" Padding="5"/>
@@ -110,21 +114,23 @@
                 <Label x:Name="ApartmentNewApartmentLableStreet"           Content="Götunafn"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,30,0,0"   Height="26" Width="70" HorizontalContentAlignment="Right"/>
                 <Label x:Name="ApartmentNewApartmentLableHouseNumber"      Content="Húsnúmer"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,60,0,0"   Height="26" Width="70" HorizontalContentAlignment="Right"/>
                 <Label x:Name="ApartmentNewApartmentLableApartmentNumber"  Content="Íbúð"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,90,0,0"   Height="26" Width="70" HorizontalContentAlignment="Right" />
-                <Label x:Name="ApartmentNewApartmentLableZip"              Content="Póstnúmer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,120,0,0"   Height="26" Width="70" HorizontalContentAlignment="Right" />
-
-                <TextBox x:Name="ApartmentNewApartmentTextBoxHerbergi"        Text="{Binding NumberOfRooms}"           VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,60,0,0"  TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentNewApartmentTextBoxFermetrar"       Text="{Binding Size}"                    VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,90,0,0"  TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentNewApartmentTextBoxVerd"            Text="{Binding Price}"                   VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,120,0,0" TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentNewApartmentTextBoxStreet"          Text="{Binding Address.Street}"          VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,30,0,0" TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentNewApartmentTextBoxHouseNumber"     Text="{Binding Address.HouseNumber}"     VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,60,0,0" TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentNewApartmentTextBoxApartmentNumber" Text="{Binding Address.ApartmentNumber}" VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,90,0,0" TextWrapping="Wrap" Padding="5"/>
-                <TextBox x:Name="ApartmentNewApartmentTextBoxDescription"     Text="{Binding Description}"             Margin="10,180,10,90" TextWrapping="Wrap"  AcceptsReturn="True"/>
+                <Label x:Name="ApartmentNewApartmentLableZip"              Content="Póstnúmer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="350,120,0,0"  Height="26" Width="70" HorizontalContentAlignment="Right" />
+                <Label x:Name="ApartmentNewApartmentLableSugestedPrice"     Content="{Binding}"    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,120,0,0"  Height="26" Width="70" DataContext="{Binding Text, Converter={StaticResource SizeToPrice}, ElementName=ApartmentNewApartmentTextBoxFermetrar}"/>
+                
+                <TextBox x:Name="ApartmentNewApartmentTextBoxHerbergi"        Text="{Binding NumberOfRooms}"                VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,60,0,0"  TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentNewApartmentTextBoxFermetrar"       Text="{Binding Size}"                         VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,90,0,0"  TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentNewApartmentTextBoxVerd"            Text="{Binding Price, Converter={StaticResource DecimalToIsk}}"  VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="80,120,0,0" TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentNewApartmentTextBoxStreet"          Text="{Binding Address.Street}"               VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,30,0,0" TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentNewApartmentTextBoxHouseNumber"     Text="{Binding Address.HouseNumber}"          VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,60,0,0" TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentNewApartmentTextBoxApartmentNumber" Text="{Binding Address.ApartmentNumber}"      VerticalAlignment="Top" HorizontalAlignment="Left" Height="26" Width="120" Margin="420,90,0,0" TextWrapping="Wrap" Padding="5"/>
+                <TextBox x:Name="ApartmentNewApartmentTextBoxDescription"     Text="{Binding Description}"                  Margin="10,180,10,90" TextWrapping="Wrap"  AcceptsReturn="True"/>
 
                 <ComboBox x:Name="ApartmentNewApartmentComboBoxZip" ItemsSource="{Binding}" DisplayMemberPath="Full" HorizontalAlignment="Left" Margin="420,120,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
 
                 <Button x:Name="ApartmentNewApartmentbuttonAddAppartment" Content="Bæta Við Íbúð"    HorizontalAlignment="Left" Margin="220,30,0,0" VerticalAlignment="Top" Width="108" Height="42" FontSize="14" Click="AptAddAptment"/>
                 <Button x:Name="ApartmentNewApartmentbuttonCancel"        Content="Hætta Við"        HorizontalAlignment="Left" Margin="220,80,0,0" VerticalAlignment="Top" Width="108" Height="42" FontSize="14" Click="AptEditCancel"/>
             </Grid>
+            
 
         </Grid>
         <Grid Name="gridCustomers" Margin="192,110,0,0" Background="White" Visibility="Collapsed">

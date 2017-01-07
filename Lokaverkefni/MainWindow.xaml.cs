@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LokaVerkefniCL;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -49,8 +50,9 @@ namespace Lokaverkefni
         /// Creating a Variable to link Zip Code from Combobox to Apartment, Accesable to all functions
         /// </summary>
         LokaVerkefniCL.Zip Post;
+        
 
-
+        #region MainWindow
         public MainWindow()
         {
             InitializeComponent();
@@ -90,7 +92,7 @@ namespace Lokaverkefni
             gridContracts.Visibility = Visibility.Collapsed;
             gridCustomers.Visibility = Visibility.Collapsed;
         }
-
+        #endregion MainWindow
         #region Apartments
 
         public void AptDeleteApartment(object sender, RoutedEventArgs e)
@@ -211,9 +213,10 @@ namespace Lokaverkefni
             ApartmentNewApartmentComboBoxZip.DataContext = ApartmentzipviewSource;
             // Hiding the Display Grid and showing the New Apartment Grid
             ApartmentDisplay.Visibility = Visibility.Collapsed;
-            ApartmentNewApartment.Visibility = Visibility.Visible;
+            ApartmentNewApartment.Visibility = Visibility.Visible;            
         }
 
+        
         /// <summary>
         /// Saving the New Apartment and Adress to Database
         /// </summary>        
