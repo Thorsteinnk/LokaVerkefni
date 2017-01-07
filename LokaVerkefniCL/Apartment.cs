@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace LokaVerkefniCL
 {
     
-    public class Apartment
+    public class Apartment : INotifyPropertyChanged
     {
         public int ID { get; set; }
         public double Size { get; set; }
@@ -16,7 +17,19 @@ namespace LokaVerkefniCL
         public int NumberOfRooms { get; set; }
         public string Description { get; set; }        
         public int AddressID { get; set; }
-        public Address Address { get; set; }
+        private Address address;
+        public Address Address
+        {
+            get
+            {
+                return address;
+            }
+            set
+            {
+                address = value;
+                OnPropertyChanged("Full");
+            }
+        }
         public ObservableCollection<Incident> Incidents { get; set; }
         public ObservableCollection<Contract> Contracts { get; set; }
         public string Full
@@ -37,6 +50,20 @@ namespace LokaVerkefniCL
         }
 
         public Apartment() { }
+
+        public Apartment(Apartment old)
+        {
+            this.ID = old.ID;
+            this.Size = old.Size;
+            this.Price = old.Price;
+            this.NumberOfRooms = old.NumberOfRooms;
+            this.Description = old.Description;
+            this.AddressID = old.AddressID;
+            this.Address = new Address(old.Address);
+            this.Incidents = old.Incidents;
+            this.Contracts = old.Contracts;
+        }
+
         public Apartment(decimal Price ,double Size, int NumberOfRooms, string Description, int AdressID)
         {
             this.Price = Price;
@@ -45,6 +72,14 @@ namespace LokaVerkefniCL
             this.Description = Description;
             this.AddressID = AddressID;
         }
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+            }
+        }
     }
 }

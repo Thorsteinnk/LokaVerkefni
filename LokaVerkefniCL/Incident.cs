@@ -15,6 +15,11 @@ namespace LokaVerkefniCL
         public int ApartmentID { get; set; }
 
         public Incident() { }
+        public Incident(int Apartmentid)
+        {
+            this.ApartmentID = Apartmentid;
+            this.Solved = false;
+        }
         public Incident(string Description)
         {
             this.Description = Description;
