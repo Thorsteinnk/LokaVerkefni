@@ -15,6 +15,20 @@ namespace LokaVerkefniCL
         public string Name { get; set; }
         public int AddressID { get; set; }
         public Address Address { get; set; }
+        public bool HasReference {
+            get
+            {
+                if (this.References == null)
+                {
+                    return false;
+                }
+
+                else
+                {
+                    return true;
+                }
+            }
+        }
         public ObservableCollection<Reference> References { get; set; }
         public ObservableCollection<Contract> Contracts { get; set; }
 
