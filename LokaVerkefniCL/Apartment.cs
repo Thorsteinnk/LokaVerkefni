@@ -12,8 +12,47 @@ namespace LokaVerkefniCL
     public class Apartment : INotifyPropertyChanged
     {
         public int ID { get; set; }
-        public double Size { get; set; }
-        public decimal Price { get; set; }
+        private double size;
+        public double Size
+        {
+            get
+            {
+                return size;
+
+            }
+
+            set
+            {
+                size = value;
+                OnPropertyChanged("PriceM2");
+            }
+        }
+        public decimal price;
+        public decimal Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                price = value;
+                OnPropertyChanged("PriceM2");
+            }
+        }
+        public decimal PriceM2
+        {
+            get
+            {
+                return Price / (decimal)Size;
+            }
+
+            set
+            {
+                Price = value * (decimal)Size;
+                OnPropertyChanged("Price");
+            }
+        }
         public int NumberOfRooms { get; set; }
         public string Description { get; set; }        
         public int AddressID { get; set; }
