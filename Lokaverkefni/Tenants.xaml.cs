@@ -33,13 +33,15 @@ namespace Lokaverkefni
             DataContext = viewSource;
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+       
+        private void TenBtnClkNew(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TenBtnClkEdit(object sender, RoutedEventArgs e)
         {
+
 
         }
     }
