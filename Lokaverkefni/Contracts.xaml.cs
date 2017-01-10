@@ -21,6 +21,8 @@ namespace Lokaverkefni
     {
         CollectionViewSource ContractViewSource = new CollectionViewSource();
         LokaverkefniDataContext DContext = new LokaverkefniDataContext();
+        LokaVerkefniCL.Contract EditingContract;
+        LokaVerkefniCL.Contract NewContract;
 
         public Contracts()
         {
@@ -31,6 +33,8 @@ namespace Lokaverkefni
 
         private void ContractMainBtnNewContract_Click(object sender, RoutedEventArgs e)
         {
+            NewContract = new LokaVerkefniCL.Contract();
+            ContractNew.DataContext = NewContract;
             ContractMain.Visibility = Visibility.Collapsed;
             ContractNew.Visibility = Visibility.Visible;
         }
