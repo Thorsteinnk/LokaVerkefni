@@ -19,14 +19,38 @@ namespace Lokaverkefni
     /// </summary>
     public partial class Contracts : Window
     {
-        CollectionViewSource viewSource = new CollectionViewSource();
+        CollectionViewSource ContractViewSource = new CollectionViewSource();
         LokaverkefniDataContext DContext = new LokaverkefniDataContext();
 
         public Contracts()
         {
             InitializeComponent();
-            viewSource.Source = DContext.Contracts;
-            DataContext = viewSource;
+            ContractViewSource.Source = DContext.Contracts;
+            DataContext = ContractViewSource;
+        }
+
+        private void ContractMainBtnNewContract_Click(object sender, RoutedEventArgs e)
+        {
+            ContractMain.Visibility = Visibility.Collapsed;
+            ContractNew.Visibility = Visibility.Visible;
+        }
+
+        private void ContractNewBtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ContractNew.Visibility = Visibility.Collapsed;
+            ContractMain.Visibility = Visibility.Visible;
+        }
+
+        private void ContractMainBtnEditContract_Click(object sender, RoutedEventArgs e)
+        {
+            ContractMain.Visibility = Visibility.Collapsed;
+            ContractEdit.Visibility = Visibility.Visible;
+        }
+
+        private void ContractEditBtnSaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            ContractEdit.Visibility = Visibility.Collapsed;
+            ContractMain.Visibility = Visibility.Visible;
         }
     }
 }
