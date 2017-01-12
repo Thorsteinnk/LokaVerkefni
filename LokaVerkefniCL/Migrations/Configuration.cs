@@ -169,6 +169,12 @@ namespace LokaVerkefniCL.Migrations
             context.SaveChanges();
             context.Adresses.AddOrUpdate(a => a.AdressKey, new Address("Þrúðvangur", 33));
             context.SaveChanges();
+            context.Adresses.AddOrUpdate(a => a.AdressKey, new Address("Völufell", 9));
+            context.SaveChanges();
+            context.Adresses.AddOrUpdate(a => a.AdressKey, new Address("Háaleitisbraut", "103", 6));
+            context.SaveChanges();
+            context.Adresses.AddOrUpdate(a => a.AdressKey, new Address("Erluás", "17", 34));
+            context.SaveChanges();
             context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
             {
                 Price = 160000,
@@ -177,6 +183,7 @@ namespace LokaVerkefniCL.Migrations
                 Description = "Góð og vel skipulögð 63,5 fm íbúð á annarri hæð í litlu fjölbýlishúsi við Móabarð 34 með góðu útsýni til suðurs.",
                 AddressID = 1
             });
+
             context.SaveChanges();
             context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
             {
@@ -187,12 +194,47 @@ namespace LokaVerkefniCL.Migrations
                 AddressID = 2
             });
 
+            context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
+            {
+                Price = 200000,
+                Size = 110,
+                NumberOfRooms = 4,
+                Description = "Íbúðin er á efstu hæð í rólegri götu í 111 Reykjavík. Íbúðin er 110 fm. og skiptist þannig: 3 rúmgóð svefnhbergi og hol fyrir utan þau; mjög rúmgóð stofa sem skipta má í stofu" + 
+                              " og borðstofu; rúmgott eldhús með nýlegri innréttingu; þvottahús innan íbúðar með þvottavél; nýlega innréttað baðherbergi; yfirbyggðar svalir; sérgeymsla. \n\n " +
+                              " Íbúðin er öll hin snyrtilegasta og verður afhent nýmáluð.Gæludýrahald og reykingar eru ekki leyfð í íbúðinni. \n\n " +
+                              " Leigan er 190.000 krónur auk húsgjalda, samtals 200.000 kr.á mánuði(með samningi).Farið er fram á þriggja mánaða tryggingu / bankaábyrgð.\n\n " + 
+                              "Áhugasmir eru vinsamlegast beðnir um að senda upplýsingar um fjölskylduhagi, atvinnu og aðrar upplýsingar sem gagnast á eftirfarandi netfang: 4herb111@gmail.com." + 
+                              "Leigusali áskilur sér rétt til að fara fram á eftirfarandi gögn áður en leigusamningur er gerður: hreint sakavottorð, staðfestingu um að leigutaki sé ekki á vanskilaskrá,"+
+                              "staðfestingu frá vinnuveitanda og meðmæli frá fyrri leigusala.",
+                AddressID = 3
+            });
+
+            context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
+            {
+                Price = 170000,
+                Size = 78.1,
+                NumberOfRooms = 3,
+                Description = "TIL LEIGU 3ja herbergja, 78,1 fm íbúð með sér inngangi á jarðhæð / kjallara í fjölbýlishúsi við Háaleitisbraut. Tvö svefnherbergi og stofa. Geymsla innan íbúðar en þvottahús í sameign.",
+                AddressID = 4
+            });
+
+            context.Apartments.AddOrUpdate(a => a.AddressID, new Apartment()
+            {
+                Price = 400000,
+                Size = 214,
+                NumberOfRooms = 5,
+                Description = "RE/MAX Fjörður KYNNIR:Til leigu fallegt og vel skipulagt fjölskyldu hús á vinsælum stað í Áslandinu í Hafnarfirði.\nLeiguverð kr 400.000 ATH 3ja mánaða bankaábyrgð er skilyrði.Eignin er laus til útleigu.",
+                AddressID = 5
+            });
+
+
             context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
             {
                 Name = "Þorsteinn Kristjánsson",
                 SocialSecurity = "0210852519",
                 AddressID = 1,
             });
+
             context.SaveChanges();
             context.Contracts.AddOrUpdate(a => a.ApartmentID, new Contract()
             {
