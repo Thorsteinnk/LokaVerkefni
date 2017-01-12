@@ -15,17 +15,32 @@ namespace LokaVerkefniCL
         public string Name { get; set; }
         public int AddressID { get; set; }
         public Address Address { get; set; }
+        public bool hasReference;
         public bool HasReference {
             get
             {
                 if (this.References == null)
                 {
-                    return false;
+                    hasReference = false;
+                    return hasReference;
                 }
 
                 else
                 {
-                    return true;
+                    hasReference = true;
+                    return hasReference;
+                }
+            }
+            set
+            {
+                if (this.References == null)
+                {
+                    hasReference = false;                    
+                }
+
+                else
+                {
+                    hasReference = true;                    
                 }
             }
         }

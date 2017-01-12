@@ -37,7 +37,7 @@ namespace Lokaverkefni
         /// <summary>
         /// Creating a Variable for editing Apartments, accessable to all Functions
         /// </summary>
-        LokaVerkefniCL.Apartment EditingApartment;
+        Apartment EditingApartment;
         /// <summary>
         /// Creating a Variable for a new Appartment, accesable to all Functions
         /// </summary>
@@ -168,9 +168,9 @@ namespace Lokaverkefni
 
         private void AptAddIncident(object sender, RoutedEventArgs e)
         {
-            LokaVerkefniCL.Incident inci = new LokaVerkefniCL.Incident(EditingApartment.ID);
+            Incident inci = new Incident(EditingApartment.ID);
             DContext.context.Incidents.Add(inci);
-            LokaVerkefniCL.Apartment temp = (LokaVerkefniCL.Apartment)ApartmentDisplayComboBoxApartment.SelectedItem;
+            Apartment temp = (Apartment)ApartmentDisplayComboBoxApartment.SelectedItem;
             EditingApartment.Incidents = temp.Incidents;
         }
 
