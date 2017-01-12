@@ -16,8 +16,21 @@ namespace LokaVerkefniCL
         public decimal Price { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime ReturnDate { get; set; }
-
-        public Contract() { }
+        
+        public Contract()
+        {
+            RentDate = DateTime.Now;
+            ReturnDate = DateTime.Now.AddYears(1);
+        }
+        public Contract(Contract old)
+        {
+            this.ID = old.ID;
+            this.ApartmentID = old.ApartmentID;
+            this.PersonID = old.PersonID;
+            this.Price = old.Price;
+            this.RentDate = old.RentDate;
+            this.ReturnDate = old.ReturnDate;
+        }
         public Contract(int ApartmentID, int PersonID, int Price, DateTime RentDate, DateTime ReturnDate)
         {
             this.ApartmentID = ApartmentID;
