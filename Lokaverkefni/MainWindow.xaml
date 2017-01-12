@@ -19,12 +19,12 @@
             <Button x:Name="btnContracts" Content="Samningar" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
 
         </StackPanel>
-        <Grid Name="gridHome" Margin="192,110,0,0" Background="White" >
+        <Grid Name="gridHome" Margin="192,110,0,0" Background="White" d:IsHidden="True" >
             <Image x:Name="image" Source="Logo.png"/>
 
 
         </Grid>
-        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White" Visibility="Collapsed" >
+        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White"  >
             <Grid Name="ApartmentDisplay" >
                 <Label x:Name="ApartmentDisplayLableNumberOfRooms"   Content="Herbergi"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right" />
                 <Label x:Name="ApartmentDisplayLableSize"            Content="Fermetrar"     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right" />
@@ -66,7 +66,7 @@
                 </ListBox>
             </Grid>
 
-            <Grid Name="ApartmentEdit" Visibility="Collapsed">
+            <Grid Name="ApartmentEdit" >
 
                 <Label x:Name="ApartmentEditLableNumberOfRooms"    Content="Herbergi"       HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right"/>
                 <Label x:Name="ApartmentEditLableSize"             Content="Fermetrar"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right" />
@@ -109,7 +109,7 @@
             </Grid>
 
 
-            <Grid Name="ApartmentNewApartment" Visibility="Collapsed">
+            <Grid Name="ApartmentNewApartment" d:IsHidden="True" >
 
                 <Label x:Name="ApartmentNewApartmentLableNumberOfRooms"    Content="Herbergi"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="70" HorizontalContentAlignment="Right"/>
                 <Label x:Name="ApartmentNewApartmentLableSize"             Content="Fermetrar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="70" HorizontalContentAlignment="Right" />
