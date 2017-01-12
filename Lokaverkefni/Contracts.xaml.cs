@@ -25,8 +25,7 @@ namespace Lokaverkefni
         CollectionViewSource TenantViewSource = new CollectionViewSource();
         CollectionViewSource ApartmentViewSource = new CollectionViewSource();
         LokaverkefniDataContext DContext = new LokaverkefniDataContext();
-        LokaVerkefniCL.Contract EditingContract;
-        LokaVerkefniCL.Contract NewContract;
+        LokaVerkefniCL.Contract Contract;
         LokaVerkefniCL.Apartment ContractApartment;
         LokaVerkefniCL.Tenant ContractTenant;
 
@@ -38,11 +37,13 @@ namespace Lokaverkefni
             ApartmentViewSource.Source = DContext.Apartments;
             DataContext = ContractViewSource;
         }
+        #region Contracts
 
+        #region NewContract
         private void ContractMainBtnNewContract_Click(object sender, RoutedEventArgs e)
         {
-            NewContract = new LokaVerkefniCL.Contract();
-            ContractNew.DataContext = NewContract;
+            Contract = new LokaVerkefniCL.Contract();
+            ContractNew.DataContext = Contract;
             ContractNewComboBoxApartment.DataContext = ApartmentViewSource;
             ContractNewComboBoxTenant.DataContext = TenantViewSource;
             ContractNewTxtEstimatedPrice.DataContext = ApartmentViewSource;
@@ -53,18 +54,27 @@ namespace Lokaverkefni
         private void ContractNewBtnSave_Click(object sender, RoutedEventArgs e)
         {
             ContractApartment = (LokaVerkefniCL.Apartment)ContractNewComboBoxApartment.SelectedItem;
-            NewContract.ApartmentID = ContractApartment.ID;
+            Contract.ApartmentID = ContractApartment.ID;
             ContractTenant = (LokaVerkefniCL.Tenant)ContractNewComboBoxTenant.SelectedItem;
-            NewContract.PersonID = ContractTenant.ID;
-            DContext.context.Contracts.AddOrUpdate(c => new { c.PersonID, c.ApartmentID }, NewContract);
+            Contract.PersonID = ContractTenant.ID;
+            DContext.context.Contracts.AddOrUpdate(c => new { c.PersonID, c.ApartmentID }, Contract);
             DContext.context.SaveChanges();
             ContractNew.Visibility = Visibility.Collapsed;
             ContractMain.Visibility = Visibility.Visible;
         }
 
+        private void ContractNewBtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            ContractEdit.Visibility = Visibility.Collapsed;
+            ContractNew.Visibility = Visibility.Collapsed;
+            ContractMain.Visibility = Visibility.Visible;
+        }
+        #endregion NewContract
+
+        #region EditContract
         private void ContractMainBtnEditContract_Click(object sender, RoutedEventArgs e)
         {
-            EditingContract = new LokaVerkefniCL.Contract((LokaVerkefniCL.Contract)ContractMainComboBoxApartment.SelectedItem);
+            Contract = new LokaVerkefniCL.Contract((LokaVerkefniCL.Contract)ContractMainComboBoxApartment.SelectedItem);
             ContractMain.Visibility = Visibility.Collapsed;
             ContractEdit.Visibility = Visibility.Visible;
         }
@@ -75,14 +85,9 @@ namespace Lokaverkefni
             ContractEdit.Visibility = Visibility.Collapsed;
             ContractMain.Visibility = Visibility.Visible;
         }
+        #endregion EditContract
 
-        private void ContractNewBtnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            ContractEdit.Visibility = Visibility.Collapsed;
-            ContractNew.Visibility = Visibility.Collapsed;
-            ContractMain.Visibility = Visibility.Visible;
-        }
-
+        #region DeleteContract
         private void ContractMainBtnDeleteContract_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Ertu viss um að þú viljir eyða samningnum?", "Staðfesting", MessageBoxButton.YesNo);
@@ -97,5 +102,8 @@ namespace Lokaverkefni
                 DContext.context.SaveChanges();
             }
         }
+        #endregion DeleteContract
+
+        #endregion Contracts
     }
 }
