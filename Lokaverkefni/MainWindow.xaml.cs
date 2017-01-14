@@ -73,7 +73,7 @@ namespace Lokaverkefni
 
             // Setting the main View Source as the Data Context for Apartments
             gridApartment.DataContext = ApartmentViewSource;
-
+            gridHome.DataContext = TenantViewSource;
             gridContracts.DataContext = ContractViewSource;
         }
 

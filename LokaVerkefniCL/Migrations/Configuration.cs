@@ -235,12 +235,44 @@ namespace LokaVerkefniCL.Migrations
                 AddressID = 1,
             });
 
+            context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
+            {
+                Name = "Hjalti G Atlason",
+                SocialSecurity = "0306842309",
+                AddressID = 2,
+            });
+
+            context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
+            {
+                Name = "Ólafur J. Björnsson",
+                SocialSecurity = "0902872739",
+                AddressID = 3,
+            });
+
+            context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
+            {
+                Name = "Jón Arnar ",
+                SocialSecurity = "",
+                AddressID = 4,
+            });
+
+            context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
+            {
+                Name = "Finnbjörn Þorvaldsson",
+                SocialSecurity = "0210852519",
+                AddressID = 5,
+            });
+
+
+
+
+
             context.SaveChanges();
             context.Contracts.AddOrUpdate(a => a.ApartmentID, new Contract()
             {
                 ApartmentID = 1,
                 PersonID = 1,
-                Price = 180000,
+                Price = 160000,
                 RentDate = DateTime.Now,
                 ReturnDate = DateTime.Now.AddYears(2)
             });
