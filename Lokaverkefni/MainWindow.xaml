@@ -19,13 +19,13 @@
             <Button x:Name="btnContracts" Content="Samningar" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
 
         </StackPanel>
-        <Grid Name="gridHome" Margin="192,110,0,0" Background="White" d:IsHidden="True" >
+        <Grid Name="gridHome" Margin="192,110,0,0" Background="White">
             <Image x:Name="image" Source="Logo.png"/>
 
 
         </Grid>
-        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White"  >
-            <Grid Name="ApartmentDisplay" >
+        <Grid Name="gridApartment" Margin="192,110,0,0" Background="White" Visibility="Collapsed" >
+            <Grid Name="ApartmentDisplay">
                 <Label x:Name="ApartmentDisplayLableNumberOfRooms"   Content="Herbergi"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right" />
                 <Label x:Name="ApartmentDisplayLableSize"            Content="Fermetrar"     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right" />
                 <Label x:Name="ApartmentDisplayLablePrice"           Content="Verð"          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0"   Height="26" Width="80" HorizontalContentAlignment="Right" />
@@ -66,7 +66,7 @@
                 </ListBox>
             </Grid>
 
-            <Grid Name="ApartmentEdit" >
+            <Grid Name="ApartmentEdit" Visibility="Collapsed">
 
                 <Label x:Name="ApartmentEditLableNumberOfRooms"    Content="Herbergi"       HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right"/>
                 <Label x:Name="ApartmentEditLableSize"             Content="Fermetrar"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right" />
@@ -109,7 +109,7 @@
             </Grid>
 
 
-            <Grid Name="ApartmentNewApartment" d:IsHidden="True" >
+            <Grid Name="ApartmentNewApartment" Visibility="Collapsed" >
 
                 <Label x:Name="ApartmentNewApartmentLableNumberOfRooms"    Content="Herbergi"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="70" HorizontalContentAlignment="Right"/>
                 <Label x:Name="ApartmentNewApartmentLableSize"             Content="Fermetrar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="70" HorizontalContentAlignment="Right" />
@@ -142,6 +142,67 @@
 
         </Grid>
         <Grid Name="gridContracts" Margin="192,110,0,0" Background="White" Visibility="Collapsed">
+            <Grid Name="ContractMain">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="ContractMainLblTenant" Content="Leigjandi:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="ContractMainLblApartment" Content="Íbúð:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractMainLblPrice" Content="Verð:" HorizontalAlignment="Left" Margin="5,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="ContractMainLblRentDate" Content="Upphafsdags:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" />
+                <Label x:Name="ContractMainLblReturnDate" Content="Lokadags:" HorizontalAlignment="Left" Margin="5,72,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="ContractMainComboBoxApartment" ItemsSource="{Binding}" DisplayMemberPath="Apartment.Address.Full" Margin="100,10,5,0" VerticalAlignment="Top" Height="26"/>
+                <ComboBox x:Name="ContractMainComboBoxTenant" ItemsSource="{Binding}" DisplayMemberPath="Person.Name" Margin="95,10,10,0" VerticalAlignment="Top" Height="26" Grid.Column="1" IsEnabled="False"/>
+                <TextBlock x:Name="ContractMainTxtPrice" Margin="95,46,10,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Grid.Column="1"/>
+                <DatePicker Name="ContractMainDatePickerRentDate" SelectedDate="{Binding RentDate}" HorizontalAlignment="Left" Margin="100,73,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                <DatePicker Name="ContractMainDatePickerReturnDate" SelectedDate="{Binding ReturnDate}" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Grid.Column="1" IsEnabled="False"/>
+                <Button x:Name="ContractMainBtnNewContract" Content="Nýr samningur" HorizontalAlignment="Right" Margin="0,103,10,0" Width="95" Height="22" VerticalAlignment="Top" Grid.Column="1" Click="ContractMainBtnNewContract_Click"/>
+                <Button x:Name="ContractMainBtnEditContract" Content="Breyta samning" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="ContractMainBtnEditContract_Click"/>
+                <Button x:Name="ContractMainBtnDeleteContract" Content="Eyða samning" Margin="0,103,5,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="95" Click="ContractMainBtnDeleteContract_Click"/>
+            </Grid>
+
+            <Grid Name="ContractNew" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="ContractNewLblTenant" Content="Leigjandi:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="ContractNewLblApartment" Content="Íbúð:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractNewLblEstimatedPrice" Content="Viðmiðunarverð:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractNewLblPrice" Content="Umsamið verð:" HorizontalAlignment="Left" Margin="5,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="ContractNewLblRentDate" Content="Upphafsdags:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractNewLblReturnDate" Content="Lokadags:" HorizontalAlignment="Left" Margin="5,72,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="ContractNewComboBoxApartment" ItemsSource="{Binding}" DisplayMemberPath="Full" Margin="100,10,5,0" VerticalAlignment="Top" Height="26"/>
+                <ComboBox x:Name="ContractNewComboBoxTenant" ItemsSource="{Binding}" DisplayMemberPath="Name" Margin="95,10,10,0" VerticalAlignment="Top" Grid.Column="1" Height="26"/>
+                <DatePicker Name="ContractNewDatePickerRentDate" SelectedDate="{Binding RentDate}" HorizontalAlignment="Left" Margin="100,73,0,0" VerticalAlignment="Top"/>
+                <DatePicker Name="ContractNewDatePickerReturnDate" SelectedDate="{Binding ReturnDate}" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="ContractNewTxtEstimatedPrice" Margin="110,46,5,0" TextWrapping="Wrap" Text="{Binding Price, Converter={StaticResource DecimalToIsk}}" VerticalAlignment="Top"/>
+                <TextBox x:Name="ContractNewTxtPrice" Height="23" Margin="95,45,10,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Grid.Column="1"/>
+                <Button x:Name="ContractNewBtnSave" Content="Vista Samning" Grid.Column="1" Margin="0,103,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Height="22" Click="ContractNewBtnSave_Click"/>
+                <Button x:Name="ContractNewBtnCancel" Content="Hætta Við" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="ContractNewBtnCancel_Click"/>
+
+            </Grid>
+            <Grid Name="ContractEdit" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="ContractEditLblTenant" Content="Leigjandi:" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="ContractEditLblApartment" Content="Íbúð:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractEditLblEstimatedPrice" Content="Viðmiðunarverð:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractEditLblPrice" Content="Umsamið verð:" HorizontalAlignment="Left" Margin="5,41,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="ContractEditLblRentDate" Content="Upphafsdags:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ContractEditLblReturnDate" Content="Lokadags:" HorizontalAlignment="Left" Margin="5,72,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <ComboBox x:Name="ContractEditComboBoxApartment" ItemsSource="{Binding}" DisplayMemberPath="Apartment.Address.Full" Margin="100,10,5,0" VerticalAlignment="Top" Height="26" IsEnabled="False"/>
+                <ComboBox x:Name="ContractEditComboBoxTenant" ItemsSource="{Binding}" DisplayMemberPath="Person.Name" Margin="95,10,10,0" VerticalAlignment="Top" Grid.Column="1" Height="26" IsEnabled="False"/>
+                <DatePicker Name="ContractEditDatePickerRentDate" SelectedDate="{Binding RentDate}" HorizontalAlignment="Left" Margin="100,73,0,0" VerticalAlignment="Top"/>
+                <DatePicker Name="ContractEditDatePickerReturnDate" SelectedDate="{Binding ReturnDate}" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="ContractEditTxtEstimatedPrice" Margin="110,46,5,0" TextWrapping="Wrap" Text="{Binding Apartment.Price}" VerticalAlignment="Top"/>
+                <TextBox x:Name="ContractEditTxtPrice" Height="23" Margin="95,45,10,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Grid.Column="1"/>
+                <Button x:Name="ContractEditBtnSaveChanges" Content="Vista Samning" Grid.Column="1" Margin="0,102,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Height="22" Click="ContractEditBtnSaveChanges_Click"/>
+                <Button x:Name="ContractEditBtnCancel" Content="Hætta Við" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="ContractNewBtnCancel_Click"/>
+            </Grid>
 
 
         </Grid>
