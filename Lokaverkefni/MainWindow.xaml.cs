@@ -111,16 +111,35 @@ namespace Lokaverkefni
 
         public void AptDeleteApartment(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Ertu Viss um að þú Viljir Eyða íbúðini?", "Staðfesting", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.No)
+            EditingApartment = (LokaVerkefniCL.Apartment)ApartmentDisplayComboBoxApartment.SelectedItem;
+            bool ApartmentInRent = false;
+            foreach (Contract a in DContext.Contracts)
             {
+                if (a.ApartmentID == EditingApartment.ID)
+                {
+                    ApartmentInRent = true;
+                }
+            }
 
-            }
-            else if (result == MessageBoxResult.Yes)
+            if (ApartmentInRent)
             {
-                LokaVerkefniCL.Apartment temp = (LokaVerkefniCL.Apartment)ApartmentDisplayComboBoxApartment.SelectedItem;
-                DContext.context.Apartments.Remove(temp);
+                MessageBox.Show("Íbúðin er í leigu og ekki hægt að Eyða");
             }
+
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Ertu Viss um að þú Viljir Eyða íbúðini?", "Staðfesting", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No)
+                {
+
+                }
+                else if (result == MessageBoxResult.Yes)
+                {
+                    LokaVerkefniCL.Apartment temp = (LokaVerkefniCL.Apartment)ApartmentDisplayComboBoxApartment.SelectedItem;
+                    DContext.context.Apartments.Remove(temp);
+                }
+            }
+            
 
         }
         
