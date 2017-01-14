@@ -137,14 +137,8 @@
             
 
         </Grid>
-        <Grid Name="gridCustomers" Margin="192,110,0,0" Background="White" Visibility="Collapsed">
-
-
-        </Grid>
-        <Grid Name="gridContracts" Margin="192,110,0,0" Background="White" Visibility="Collapsed">
-
-
-        </Grid>
+        <Grid Name="gridCustomers" Margin="192,110,0,0" Background="White" Visibility="Collapsed"/>
+        <Grid Name="gridContracts" Margin="192,110,0,0" Background="White" Visibility="Collapsed"/>
 
 
     </Grid>
