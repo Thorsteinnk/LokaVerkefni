@@ -25,11 +25,15 @@ namespace Lokaverkefni
         /// <summary>
         /// Main View Source for Apartments Created
         /// </summary>
-        CollectionViewSource ApartmentviewSource = new CollectionViewSource();
+        CollectionViewSource ApartmentViewSource = new CollectionViewSource();
         /// <summary>
         /// View Source for Zip Codes Created
         /// </summary>
         CollectionViewSource ApartmentzipviewSource = new CollectionViewSource();
+
+        CollectionViewSource ContractViewSource = new CollectionViewSource();
+        CollectionViewSource TenantViewSource = new CollectionViewSource();
+
         /// <summary>
         /// Data Context Created
         /// </summary>
@@ -50,19 +54,27 @@ namespace Lokaverkefni
         /// Creating a Variable to link Zip Code from Combobox to Apartment, Accesable to all functions
         /// </summary>
         LokaVerkefniCL.Zip Post;
-        
+
+        LokaVerkefniCL.Contract Contract;
+        LokaVerkefniCL.Apartment ContractApartment;
+        LokaVerkefniCL.Tenant ContractTenant;
 
         #region MainWindow
         public MainWindow()
         {
             InitializeComponent();
             // Connecting the main Viewsource to Data Context - Apartments
-            ApartmentviewSource.Source = DContext.Apartments;
+            ApartmentViewSource.Source = DContext.Apartments;
             // Conecting the zip Viewsource to Data Context - Zip so it can access all Zip codes
             ApartmentzipviewSource.Source = DContext.Zip;
-            // Setting the main View Source as the Data Context for Apartments
-            gridApartment.DataContext = ApartmentviewSource;
 
+            ContractViewSource.Source = DContext.Contracts;
+            TenantViewSource.Source = DContext.Tenants;
+
+            // Setting the main View Source as the Data Context for Apartments
+            gridApartment.DataContext = ApartmentViewSource;
+
+            gridContracts.DataContext = ContractViewSource;
         }
 
         private void btnApartments_Click(object sender, RoutedEventArgs e)
@@ -81,8 +93,10 @@ namespace Lokaverkefni
 
         private void btnContracts_Click(object sender, RoutedEventArgs e)
         {
-            Contracts contrwin = new Contracts();
-            contrwin.ShowDialog();
+            HideGrids();
+            gridContracts.Visibility = Visibility.Visible;
+            //Contracts contrwin = new Contracts();
+            //contrwin.ShowDialog();
         }
 
         private void HideGrids()
@@ -241,6 +255,76 @@ namespace Lokaverkefni
         }
         #endregion NewApartment
 
-#endregion Apartments
+        #endregion Apartments
+
+        #region Contracts
+
+        #region NewContract
+        private void ContractMainBtnNewContract_Click(object sender, RoutedEventArgs e)
+        {
+            Contract = new LokaVerkefniCL.Contract();
+            ContractNew.DataContext = Contract;
+            ContractNewComboBoxApartment.DataContext = ApartmentViewSource;
+            ContractNewComboBoxTenant.DataContext = TenantViewSource;
+            ContractNewTxtEstimatedPrice.DataContext = ApartmentViewSource;
+            ContractMain.Visibility = Visibility.Collapsed;
+            ContractNew.Visibility = Visibility.Visible;
+        }
+
+        private void ContractNewBtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            ContractApartment = (LokaVerkefniCL.Apartment)ContractNewComboBoxApartment.SelectedItem;
+            Contract.ApartmentID = ContractApartment.ID;
+            ContractTenant = (LokaVerkefniCL.Tenant)ContractNewComboBoxTenant.SelectedItem;
+            Contract.PersonID = ContractTenant.ID;
+            DContext.context.Contracts.AddOrUpdate(c => new { c.PersonID, c.ApartmentID }, Contract);
+            DContext.context.SaveChanges();
+            ContractNew.Visibility = Visibility.Collapsed;
+            ContractMain.Visibility = Visibility.Visible;
+        }
+
+        private void ContractNewBtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            ContractEdit.Visibility = Visibility.Collapsed;
+            ContractNew.Visibility = Visibility.Collapsed;
+            ContractMain.Visibility = Visibility.Visible;
+        }
+        #endregion NewContract
+
+        #region EditContract
+        private void ContractMainBtnEditContract_Click(object sender, RoutedEventArgs e)
+        {
+            Contract = new LokaVerkefniCL.Contract((LokaVerkefniCL.Contract)ContractMainComboBoxApartment.SelectedItem);
+            ContractMain.Visibility = Visibility.Collapsed;
+            ContractEdit.Visibility = Visibility.Visible;
+        }
+
+        private void ContractEditBtnSaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            DContext.context.SaveChanges();
+            ContractEdit.Visibility = Visibility.Collapsed;
+            ContractMain.Visibility = Visibility.Visible;
+        }
+        #endregion EditContract
+
+        #region DeleteContract
+        private void ContractMainBtnDeleteContract_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Ertu viss um að þú viljir eyða samningnum?", "Staðfesting", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No)
+            {
+
+            }
+            else if (result == MessageBoxResult.Yes)
+            {
+                LokaVerkefniCL.Contract temp = (LokaVerkefniCL.Contract)ContractMainComboBoxApartment.SelectedItem;
+                DContext.context.Contracts.Remove(temp);
+                DContext.context.SaveChanges();
+            }
+        }
+        #endregion DeleteContract
+
+        #endregion Contracts
+
     }
 }
