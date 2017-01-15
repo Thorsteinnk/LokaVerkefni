@@ -24,8 +24,7 @@ namespace Lokaverkefni
             style = NumberStyles.Number | NumberStyles.AllowCurrencySymbol;
             cult = CultureInfo.CreateSpecificCulture("is-IS");
             string text = value.ToString();
-            decimal amount;
-            if (Decimal.TryParse(text, style, cult, out amount))
+            if (Decimal.TryParse(text, style, cult, out decimal amount))
             {
                 return amount;
             }

@@ -77,7 +77,7 @@ namespace Lokaverkefni
             gridContracts.DataContext = ContractViewSource;
         }
 
-        private void btnApartments_Click(object sender, RoutedEventArgs e)
+        private void BtnApartments_Click(object sender, RoutedEventArgs e)
         {
             HideGrids();
             gridApartment.Visibility = Visibility.Visible;      
@@ -85,13 +85,13 @@ namespace Lokaverkefni
             //aptwin.ShowDialog();
         }
 
-        private void btnCustomers_Click(object sender, RoutedEventArgs e)
+        private void BtnCustomers_Click(object sender, RoutedEventArgs e)
         {
             Tenants custwin = new Tenants();
             custwin.ShowDialog();
         }
 
-        private void btnContracts_Click(object sender, RoutedEventArgs e)
+        private void BtnContracts_Click(object sender, RoutedEventArgs e)
         {
             HideGrids();
             gridContracts.Visibility = Visibility.Visible;

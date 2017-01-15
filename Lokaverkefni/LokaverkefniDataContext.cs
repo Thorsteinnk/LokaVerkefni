@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace Lokaverkefni
 {
-    class LokaverkefniDataContext
+    class LokaverkefniDataContext 
     {
         public LokaverkefniDBContext context = new LokaverkefniDBContext();
         ObservableCollection<Address> adresses;
@@ -117,6 +117,11 @@ namespace Lokaverkefni
                 zip = context.Zip.Local;
                 return zip;
             }
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

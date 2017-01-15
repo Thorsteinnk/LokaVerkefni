@@ -14,15 +14,14 @@
         <StackPanel HorizontalAlignment="Left" Width="192" Background="#FF005D44">
             <Image Source="Logo.png"  />
             <Button x:Name="btnHome" Content="Heim" Background="#FF005D44" Foreground="White" FontSize="30"/>
-            <Button x:Name="btnApartments" Content="Íbúðir" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnApartments_Click"/>
-            <Button x:Name="btnCustomers" Content="Viðskiptavinir" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnCustomers_Click"/>
-            <Button x:Name="btnContracts" Content="Samningar" Background="#FF005D44" Foreground="White" FontSize="30" Click="btnContracts_Click"/>
+            <Button x:Name="btnApartments" Content="Íbúðir" Background="#FF005D44" Foreground="White" FontSize="30" Click="BtnApartments_Click"/>
+            <Button x:Name="btnCustomers" Content="Viðskiptavinir" Background="#FF005D44" Foreground="White" FontSize="30" Click="BtnCustomers_Click"/>
+            <Button x:Name="btnContracts" Content="Samningar" Background="#FF005D44" Foreground="White" FontSize="30" Click="BtnContracts_Click"/>
 
         </StackPanel>
         <Grid Name="gridHome" Margin="192,110,0,0" Background="White">
             <Image x:Name="image" Source="Logo.png"/>
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="299,83,0,0" TextWrapping="Wrap" Text="{Binding SocialSecurity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="comboBox" ItemsSource="{Binding}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="357,46,0,0" VerticalAlignment="Top" Width="120"/>
+            
 
 
         </Grid>
@@ -163,7 +162,7 @@
                 <Label x:Name="ContractMainLblReturnDate" Content="Lokadags:" HorizontalAlignment="Left" Margin="5,72,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <ComboBox x:Name="ContractMainComboBoxApartment" ItemsSource="{Binding}" DisplayMemberPath="Apartment.Address.Full" Margin="100,10,5,0" VerticalAlignment="Top" Height="26"/>
                 <ComboBox x:Name="ContractMainComboBoxTenant" ItemsSource="{Binding}" DisplayMemberPath="Person.Name" Margin="95,10,10,0" VerticalAlignment="Top" Height="26" Grid.Column="1" IsEnabled="False"/>
-                <TextBlock x:Name="ContractMainTxtPrice" Margin="95,46,10,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="ContractMainTxtPrice" Margin="95,46,10,0" TextWrapping="Wrap" Text="{Binding Price, Converter={StaticResource DecimalToIsk}}" VerticalAlignment="Top" Grid.Column="1"/>
                 <DatePicker Name="ContractMainDatePickerRentDate" SelectedDate="{Binding RentDate}" HorizontalAlignment="Left" Margin="100,73,0,0" VerticalAlignment="Top" IsEnabled="False"/>
                 <DatePicker Name="ContractMainDatePickerReturnDate" SelectedDate="{Binding ReturnDate}" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Grid.Column="1" IsEnabled="False"/>
                 <Button x:Name="ContractMainBtnNewContract" Content="Nýr samningur" HorizontalAlignment="Right" Margin="0,103,10,0" Width="95" Height="22" VerticalAlignment="Top" Grid.Column="1" Click="ContractMainBtnNewContract_Click"/>
@@ -187,7 +186,7 @@
                 <DatePicker Name="ContractNewDatePickerRentDate" SelectedDate="{Binding RentDate}" HorizontalAlignment="Left" Margin="100,73,0,0" VerticalAlignment="Top"/>
                 <DatePicker Name="ContractNewDatePickerReturnDate" SelectedDate="{Binding ReturnDate}" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBlock x:Name="ContractNewTxtEstimatedPrice" Margin="110,46,5,0" TextWrapping="Wrap" Text="{Binding Price, Converter={StaticResource DecimalToIsk}}" VerticalAlignment="Top"/>
-                <TextBox x:Name="ContractNewTxtPrice" Height="23" Margin="95,45,10,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBox x:Name="ContractNewTxtPrice" Height="23" Margin="95,45,10,0" TextWrapping="Wrap" Text="{Binding Price, Converter={StaticResource DecimalToIsk}}" VerticalAlignment="Top" Grid.Column="1"/>
                 <Button x:Name="ContractNewBtnSave" Content="Vista Samning" Grid.Column="1" Margin="0,103,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Height="22" Click="ContractNewBtnSave_Click"/>
                 <Button x:Name="ContractNewBtnCancel" Content="Hætta Við" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="ContractNewBtnCancel_Click"/>
 
@@ -207,8 +206,8 @@
                 <ComboBox x:Name="ContractEditComboBoxTenant" ItemsSource="{Binding}" DisplayMemberPath="Person.Name" Margin="95,10,10,0" VerticalAlignment="Top" Grid.Column="1" Height="26" IsEnabled="False"/>
                 <DatePicker Name="ContractEditDatePickerRentDate" SelectedDate="{Binding RentDate}" HorizontalAlignment="Left" Margin="100,73,0,0" VerticalAlignment="Top"/>
                 <DatePicker Name="ContractEditDatePickerReturnDate" SelectedDate="{Binding ReturnDate}" HorizontalAlignment="Left" Margin="95,73,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-                <TextBlock x:Name="ContractEditTxtEstimatedPrice" Margin="110,46,5,0" TextWrapping="Wrap" Text="{Binding Apartment.Price}" VerticalAlignment="Top"/>
-                <TextBox x:Name="ContractEditTxtPrice" Height="23" Margin="95,45,10,0" TextWrapping="Wrap" Text="{Binding Price}" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="ContractEditTxtEstimatedPrice" Margin="110,46,5,0" TextWrapping="Wrap" Text="{Binding Apartment.Price, Converter={StaticResource DecimalToIsk}}" VerticalAlignment="Top"/>
+                <TextBox x:Name="ContractEditTxtPrice" Height="23" Margin="95,45,10,0" TextWrapping="Wrap" Text="{Binding Price, Converter={StaticResource DecimalToIsk}}" VerticalAlignment="Top" Grid.Column="1"/>
                 <Button x:Name="ContractEditBtnSaveChanges" Content="Vista Samning" Grid.Column="1" Margin="0,102,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Height="22" Click="ContractEditBtnSaveChanges_Click"/>
                 <Button x:Name="ContractEditBtnCancel" Content="Hætta Við" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="ContractNewBtnCancel_Click"/>
             </Grid>
