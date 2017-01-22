@@ -17,8 +17,31 @@ namespace LokaVerkefniCL
         public int AddressID { get; set; }
         public Address Address { get; set; }
         public bool hasReference;
+        public ObservableCollection<Reference> References { get; set; }
+        public ObservableCollection<Contract> Contracts { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Tenant()
+        {
+            References = new ObservableCollection<Reference>();
+        }
+        public Tenant(string Name, int AddressID)
+        {
+            this.Name = Name;
+            this.AddressID = AddressID;
+        }
+
+        public Tenant(Tenant old)
+        {
+            ID = old.ID;
+            SocialSecurity = old.SocialSecurity;
+            Name = old.Name;
+            AddressID = old.AddressID;
+            Address = new Address(old.Address);
+            References = old.References;
+            Contracts = old.Contracts;
+        }
 
         protected void OnPropertyChanged(string propertyName)
         {
@@ -29,7 +52,7 @@ namespace LokaVerkefniCL
         public bool HasReference {
             get
             {
-                if (this.References == null)
+                if (References.Count() == 0)
                 {
                     hasReference = false;
                     return hasReference;
@@ -43,7 +66,7 @@ namespace LokaVerkefniCL
             }
             set
             {
-                if (this.References == null)
+                if (References.Count() == 0)
                 {
                     hasReference = false;                    
                 }
@@ -54,8 +77,7 @@ namespace LokaVerkefniCL
                 }
             }
         }
-        public ObservableCollection<Reference> References { get; set; }
-        public ObservableCollection<Contract> Contracts { get; set; }
+        
 
         public string Error
         {
@@ -89,12 +111,9 @@ namespace LokaVerkefniCL
             return validationMessage;
         }
 
-        public Tenant() { }
-        public Tenant(string Name, int AddressID)
-        {
-            this.Name = Name;
-            this.AddressID = AddressID;
-        }
+        
+
+
 
         public bool ValidateSSN(string kt)
         {

@@ -142,6 +142,8 @@ namespace Lokaverkefni
         {
             LokaVerkefniCL.Incident inci = new LokaVerkefniCL.Incident(EditingApartment.ID);
             DContext.context.Incidents.Add(inci);
+            DContext.context.SaveChanges();
+            DContext.context.Incidents.Load();
             LokaVerkefniCL.Apartment temp = (LokaVerkefniCL.Apartment)ApartmentDisplayComboBoxApartment.SelectedItem;
             EditingApartment.Incidents = temp.Incidents;
         }

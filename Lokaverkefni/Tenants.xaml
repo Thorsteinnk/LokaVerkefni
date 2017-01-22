@@ -5,36 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lokaverkefni"
         mc:Ignorable="d"
-        Title="Tenants" Height="345.17" Width="612.126">
+        Title="Tenants" d:DesignHeight="336" d:DesignWidth="540" >
     <Grid>
-        <Grid x:Name="Display">
-            <Label x:Name="TenLblRoom"        Content="Nafn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0"/>
-            <Label x:Name="TenLblKt"          Content="Kennitala" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,76,0,0"/>
-            <Label x:Name="TenLblAddress"     Content="Heimilisfang" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,107,0,0" Width="82"/>
+        <Grid x:Name="TenantDisplay" Loaded="ReferenceCheck" d:IsHidden="True">
+            <Label x:Name="TenLblRoom"        Content="Nafn:"         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"  Height="26" Width="80" HorizontalContentAlignment="Right" />
+            <Label x:Name="TenLblKt"          Content="Kennitala:"    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"  Height="26" Width="80" HorizontalContentAlignment="Right" />
+            <Label x:Name="TenLblAddress"     Content="Heimilisfang:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" Height="26" Width="80" HorizontalContentAlignment="Right" />
+            <Label x:Name="TenLblReference"   Content="Meðmæli:"      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" Height="26" Width="80" HorizontalContentAlignment="Right" />
+
+            <ComboBox x:Name="TenantDisplayComboboxNameList"  ItemsSource="{Binding}"            DisplayMemberPath="Name"        HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="10,36,0,0" SelectionChanged="ReferenceCheck" />
+            <ComboBox x:Name="TenantDisplayComboboxReference" ItemsSource="{Binding References}" DisplayMemberPath="Description" VerticalAlignment="Top" Margin="85,150,10,0" Height="26" Padding="5"/>
+
+            <TextBlock x:Name="TenTxtBlName"    Text="{Binding Name}"           HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,60,0,0"  Height="26" Width="240" TextWrapping="Wrap" Padding="5"/>
+            <TextBlock x:Name="TenTxtBlKt"      Text="{Binding SocialSecurity}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,90,0,0"  Height="26" Width="240" TextWrapping="Wrap" Padding="5"/>
+            <TextBlock x:Name="TenTxtBlAddress" Text="{Binding Address.Full}"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,120,0,0" Height="26" Width="240" TextWrapping="Wrap" Padding="5"/>
+
+            <Button x:Name="TenBtnEdit" Content="Breyta"            HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,10,10,0"  Height="42" FontSize="14" Click="TenBtnClkEdit"/>
+            <Button x:Name="TenBtnNew"  Content="Nýr leigjandi"     HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,55,10,0"  Height="42" FontSize="14" Click="TenBtnClkNew"/>
+            <Button x:Name="TenBtnDelete"  Content="Eyða Leigjanda" HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,100,10,0" Height="42" FontSize="14" Click="TenDeleteTenant"/>
             
-            <ComboBox x:Name="TenCombNameList"  ItemsSource="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="181" Margin="10,10,0,0" />
-            <ComboBox x:Name="TenCombReference" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.242,5.591" Margin="97,138,0,0"/>
-            
-            <TextBlock x:Name="TenTxtBlName"    HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Margin="97,50,0,0"/>
-            <TextBlock x:Name="TenTxtBlKt"      HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,81,0,0"/>
-            <TextBlock x:Name="TenTxtBlAddress" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,112,0,0"/>
-            
-            <Button x:Name="TenBtnEdit" Content="Breyta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Margin="220,10,0,0" Height="42" Click="TenBtnClkEdit"/>
-            <Button x:Name="TenBtnNew" Content="Nýr leigjandi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Margin="220,68,0,0" Height="42" Click="TenBtnClkNew"/>
-            
-            <CheckBox x:Name="TenChkReference" Content="Meðmæli" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid x:Name="Edit" Visibility="Collapsed">
-            <Label x:Name="TenEdLblRoom" Content="Nafn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,45,0,0"/>
-            <Label x:Name="TenEdLblKt" Content="Kennitala" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,76,0,0"/>
-            <Label x:Name="TenEdLblAddress" Content="Heimilisfang" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,107,0,0" Width="82"/>            
-            <TextBox x:Name="TenEdTxtBoName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,50,0,0"/>
-            <TextBox x:Name="TenEdTxtBoKt" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,81,0,0"/>
-            <TextBox x:Name="TenEdTxtBoAddress" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="97,112,0,0"/>
-            <Button x:Name="TenEdBtnEdit" Content="Breyta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Margin="220,10,0,0" Height="42" Click="TenBtnClkEdit"/>
-            <Button x:Name="TenEdBtnNew" Content="Nýr leigjandi" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108" Margin="220,68,0,0" Height="42" Click="TenBtnClkNew"/>
-            <ComboBox x:Name="TenEdCombReference" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.242,5.591" Margin="97,138,0,0"/>
-            <CheckBox x:Name="TenEdChkReference" Content="Meðmæli" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="TenantEdit" d:IsHidden="True">
+            <Label x:Name="TenEdLblRoom" Content="Nafn"            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right"/>
+            <Label x:Name="TenEdLblKt" Content="Kennitala"         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right"/>
+            <Label x:Name="TenEdLblAddress" Content="Heimilisfang" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0"   Height="26" Width="80" HorizontalContentAlignment="Right"/>
+
+            <TextBox x:Name="TenEdTxtBoName"            Text="{Binding Name}"                    HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="120" Padding="5" Margin="90,60,0,0"/>
+            <TextBox x:Name="TenEdTxtBoKt"              Text="{Binding SocialSecurity}"          HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="120" Padding="5" Margin="90,90,0,0"/>
+            <TextBox x:Name="TenEdTxtBoStreet"          Text="{Binding Address.Street}"          HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="120" Padding="5" Margin="90,120,0,0"/>
+            <TextBox x:Name="TenEdTxtBoHouseNumber"     Text="{Binding Address.HouseNumber}"     HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="30"  Padding="5" Margin="210,120,0,0"/>
+            <TextBox x:Name="TenEdTxtBoApartmentNumber" Text="{Binding Address.ApartmentNumber}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="30"  Padding="5" Margin="240,120,0,0"/>
+
+            <ComboBox x:Name="TenEdComboZip" ItemsSource="{Binding}" DisplayMemberPath="Full" Margin="270,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="5" Height="26" Width="120"/>
+
+            <Button x:Name="TenEdBtnSave"         Content="Vista"      HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,10,10,0"  Height="42" FontSize="14" Click="TenEdBtnClkSave"/>
+            <Button x:Name="TenEdBtnCancel"       Content="Hætta Við"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,55,10,0"  Height="42" FontSize="14" Click="TenEdBtnClkCancel"/>
+            <Button x:Name="TenEdBtnNewReference" Content="Ný Meðmæli" HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,100,10,0" Height="42" FontSize="14" Click="TenEdBtnClkAddReference"/>
+
+            <ListBox x:Name="TenEdListReference"  Margin="10,160,10,10" ItemsSource="{Binding References}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding Description}" MinWidth="120"/>
+                            <Button Content="Eyða"  HorizontalAlignment="Right" Click="TenEdDeleteReference"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+
+
+
+        </Grid>
+        <Grid x:Name="TenantNew">
+            <Label x:Name="TenNewLblRoom" Content="Nafn"            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right"/>
+            <Label x:Name="TenNewLblKt" Content="Kennitala"         HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0"    Height="26" Width="80" HorizontalContentAlignment="Right"/>
+            <Label x:Name="TenNewLblAddress" Content="Heimilisfang" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0"   Height="26" Width="80" HorizontalContentAlignment="Right"/>
+
+            <TextBox x:Name="TenNewTxtBoName"            Text="{Binding Name}"                    HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="120" Padding="5" Margin="90,60,0,0"/>
+            <TextBox x:Name="TenNewTxtBoKt"              Text="{Binding SocialSecurity}"          HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="120" Padding="5" Margin="90,90,0,0"/>
+            <TextBox x:Name="TenNewTxtBoStreet"          Text="{Binding Address.Street}"          HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="120" Padding="5" Margin="90,120,0,0"/>
+            <TextBox x:Name="TenNewTxtBoHouseNumber"     Text="{Binding Address.HouseNumber}"     HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="30"  Padding="5" Margin="210,120,0,0"/>
+            <TextBox x:Name="TenNewTxtBoApartmentNumber" Text="{Binding Address.ApartmentNumber}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="30"  Padding="5" Margin="240,120,0,0"/>
+
+            <ComboBox x:Name="TenNewComboZip" ItemsSource="{Binding}" DisplayMemberPath="Full" Margin="270,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="5" Height="26" Width="120"/>
+
+            <Button x:Name="TenNewBtnSave"         Content="Vista"      HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,10,10,0"  Height="42" FontSize="14" Click="TenNewSave"/>
+            <Button x:Name="TenNewBtnCancel"       Content="Hætta Við"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,55,10,0"  Height="42" FontSize="14" Click="TenEdBtnClkCancel"/>
+            <Button x:Name="TenNewBtnNewReference" Content="Ný Meðmæli" HorizontalAlignment="Right" VerticalAlignment="Top" Width="108" Margin="0,100,10,0" Height="42" FontSize="14" Click="TenNewBtnClkAddReference"/>
+
+            <ListBox x:Name="TenNewListReference"  Margin="10,160,10,10" ItemsSource="{Binding References}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding Description}" MinWidth="120"/>
+                            <Button Content="Eyða"  HorizontalAlignment="Right" Click="TenNewDeleteReference"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
         </Grid>
     </Grid>
 </Window>

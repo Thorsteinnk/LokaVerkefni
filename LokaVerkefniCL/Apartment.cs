@@ -88,7 +88,10 @@ namespace LokaVerkefniCL
             }
         }
 
-        public Apartment() { }
+        public Apartment()
+        {
+            Incidents = new ObservableCollection<Incident>();
+        }
 
         public Apartment(Apartment old)
         {

@@ -252,18 +252,22 @@ namespace LokaVerkefniCL.Migrations
             context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
             {
                 Name = "Jón Arnar ",
-                SocialSecurity = "",
+                SocialSecurity = "0807752419",
                 AddressID = 4,
             });
 
             context.Tenants.AddOrUpdate(a => a.SocialSecurity, new Tenant()
             {
                 Name = "Finnbjörn Þorvaldsson",
-                SocialSecurity = "0210852519",
+                SocialSecurity = "0812804529",
                 AddressID = 5,
             });
 
-
+            context.References.AddOrUpdate(d => d.Description, new Reference()
+            {
+                Description = "Hefur búið í sömu íbúð í 8 ár og altaf borgað á rétum tíma",
+                PersonID = 1,
+            });
 
 
 

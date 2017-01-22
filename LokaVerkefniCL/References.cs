@@ -19,5 +19,9 @@ namespace LokaVerkefniCL
             this.PersonID = PersonID;
             this.Description = Description;
         }
+        public Reference(int PersonID)
+        {
+            this.PersonID = PersonID;            
+        }
     }
 }
